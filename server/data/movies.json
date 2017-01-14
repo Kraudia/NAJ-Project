@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Dark Tower",
+        "categoryIds": ["adventure", "fantasy"],
+        "count": 1,
+        "fee": 8.99
+    },
+    {
+        "name": "Twilight",
+        "categoryIds": ["fantasy", "comedy"],
+        "count": 3,
+        "fee": 5.99
+    },
+    {
+        "name": "Star Trek",
+        "categoryIds": ["sciFi", "adventure"],
+        "count": 3,
+        "fee": 5.99
+    }
+]
