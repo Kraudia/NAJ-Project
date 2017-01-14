@@ -12,6 +12,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 app.use('/api', require('./routers/api'));
+app.use(express.static(__dirname + '/../'));
+app.use(express.static(__dirname + '/../build/'));
 
 app.listen(8081, function() {
     console.log('Server started on port 8081.');
