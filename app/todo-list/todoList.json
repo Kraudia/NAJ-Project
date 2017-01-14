@@ -1,0 +1,9 @@
+{
+    "data": [
+        { "name": "Learn javascript", "isDone": true, "priority": "low" },
+        { "name": "Learn angular", "isDone": false, "priority": "high" },
+        { "name": "Learn css", "isDone": false, "priority": "normal" },
+        { "name": "Learn html", "isDone": false, "priority": "low" },
+        { "name": "Learn rxjs", "isDone": false, "priority": "high" }
+    ]
+}
