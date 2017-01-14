@@ -20,14 +20,15 @@ var TodoListComponent = (function () {
     TodoListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (param) {
-            _this.todoService.getTodos(param.priority).subscribe(function (data) { return _this.todos = data; });
+            _this.todoService.getTodos(param.count).subscribe(function (data) { return _this.todos = data; });
         });
     };
     TodoListComponent.prototype.addNewTask = function () {
         var newTask = {
             name: this.newTodoTaskName,
-            isDone: false,
-            priority: 'low'
+            categoryIds: ["adventure", "fantasy"],
+            count: 1,
+            fee: 3.99
         };
         this.todos.push(newTask);
     };

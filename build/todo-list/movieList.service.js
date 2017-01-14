@@ -11,31 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var TodoService = (function () {
-    function TodoService(http) {
+var MovieService = (function () {
+    function MovieService(http) {
         this.http = http;
     }
-    TodoService.prototype.getTodos = function (count) {
+    MovieService.prototype.getTodos = function (category) {
         var _this = this;
-        return this.http.get('app/todo-list/todoList.json')
-            .map(function (res) { return _this.extractData(res, count); });
+        return this.http.get('app/movie-list/movieList.json')
+            .map(function (res) { return _this.extractData(res, category); });
     };
-    TodoService.prototype.extractData = function (res, count) {
+    MovieService.prototype.extractData = function (res, category) {
         var body = res.json();
-        if (count) {
-            return body.data.filter(function (todo) {
-                return todo.count === count;
+        if (category) {
+            return body.data.filter(function (movie) {
+                return movie.category === category;
             }) || {};
         }
         else {
             return body.data || {};
         }
     };
-    return TodoService;
+    return MovieService;
 }());
-TodoService = __decorate([
+MovieService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], TodoService);
-exports.TodoService = TodoService;
-//# sourceMappingURL=todoList.service.js.map
+], MovieService);
+exports.MovieService = MovieService;
+//# sourceMappingURL=movieList.service.js.map

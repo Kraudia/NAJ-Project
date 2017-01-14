@@ -1,13 +1,21 @@
-<input type="text" [(ngModel)]="newTodoTaskName" />
-<button (click)="addNewTask()">Add task</button>
 <div>
-    <a href routerLink="/list/low" routerLinkActive="active">Low</a>
-    <a href routerLink="/list/normal" routerLinkActive="active">Normal</a>
-    <a href routerLink="/list/high" routerLinkActive="active">High</a>
+    <a href routerLink="/list/adventure" routerLinkActive="active">adventure</a>
+    <a href routerLink="/list/fantasy" routerLinkActive="active">fantasy</a>
+    <a href routerLink="/list/sciFi" routerLinkActive="active">sciFi</a>
+    <a href routerLink="/list/comedy" routerLinkActive="active">comedy</a>
 </div>
 <ul>
     <li *ngFor="let todoTaskInsideFor of todos">
-        <my-todo [todoTask]="todoTaskInsideFor" 
-            (removeTodoTask)="removeChild($event)"></my-todo>
+        <my-todo [todoTask]="todoTaskInsideFor"
+            (removeTodoTask)="removeChild($event)"
+            (addTodoTask)="addChild($event)"></my-todo>
+    </li>
+</ul>
+Order
+<ul>
+    <li *ngFor="let todoTaskInsideFor of todos">
+        <my-todo [todoTask]="todoTaskInsideFor"
+            (removeTodoTask)="removeChild($event)"
+            (addTodoTask)="addChild($event)"></my-todo>
     </li>
 </ul>

@@ -2,7 +2,7 @@
   "name": "uam-es6-project-server",
   "version": "0.1.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

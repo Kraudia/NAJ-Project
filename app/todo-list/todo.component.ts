@@ -8,10 +8,16 @@ import { TodoTask } from './todo.model';
 export class TodoComponent {
     @Input() public todoTask: TodoTask;
 
-    @Output() removeTodoTask : EventEmitter<TodoTask> = 
+    @Output() removeTodoTask : EventEmitter<TodoTask> =
         new EventEmitter<TodoTask>();
-    
+
+    @Output() addTodoTask : EventEmitter<TodoTask> =
+        new EventEmitter<TodoTask>();
+
     removeTask () {
         this.removeTodoTask.emit(this.todoTask);
+    }
+    addTask () {
+        this.addTodoTask.emit(this.todoTask);
     }
 }
