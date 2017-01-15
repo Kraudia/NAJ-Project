@@ -17,6 +17,10 @@ router.get('/about', (req, res) => {
     });
 });
 
+router.get('/categories', (req, res) => {
+    res.json(storage.getCategoriesDictionary());
+});
+
 router.get('/movies', (req, res) => {
     res.json(storage.getAllMovies());
 });
