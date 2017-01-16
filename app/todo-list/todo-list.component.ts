@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoTask } from './todo.model';
 import { TodoService } from './todoList.service';
 import { ActivatedRoute } from '@angular/router';
+import { OrderListComponent } from './order-list.component.ts'
 
 @Component({
     selector: 'my-todo-list',
@@ -10,29 +11,25 @@ import { ActivatedRoute } from '@angular/router';
 export class TodoListComponent implements OnInit {
 
     public todos:Array<TodoTask> = [];
-    public todosOrder:Array<TodoTask> = [];
 
     public newTodoTaskName: string;
 
     constructor(private todoService: TodoService,
-        private activatedRoute: ActivatedRoute) {
+        private activatedRoute: ActivatedRoute, private orderListComponent: OrderListComponent) {
 
     }
 
     ngOnInit () {
         this.activatedRoute.params.subscribe((param) => {
             this.todoService.getTodos(param.categoryId).subscribe(
-                data => this.todos = data
+                b => this.todos = b
             );
         });
     }
 
-    addChild (taskToAdd: TodoTask) {
-        this.todosOrder.push(TodoTask);
+    addChildOrder (taskToAddOrder: TodoTask) {
+        this.orderListComponent.order.push(newTask);
     }
 
-    removeChild (taskToRemove: TodoTask) {
-        let index: number = this.todos.indexOf(taskToRemove);
-        this.todos.splice(index, 1);
-    }
+
 }

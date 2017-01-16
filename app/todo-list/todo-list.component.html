@@ -4,18 +4,10 @@
     <a href routerLink="/list/sciFi" routerLinkActive="active">sciFi</a>
     <a href routerLink="/list/comedy" routerLinkActive="active">comedy</a>
 </div>
+Movies
 <ul>
     <li *ngFor="let todoTaskInsideFor of todos">
         <my-todo [todoTask]="todoTaskInsideFor"
-            (removeTodoTask)="removeChild($event)"
-            (addTodoTask)="addChild($event)"></my-todo>
-    </li>
-</ul>
-Order
-<ul>
-    <li *ngFor="let todoTaskInsideFor of todos">
-        <my-todo [todoTask]="todoTaskInsideFor"
-            (removeTodoTask)="removeChild($event)"
-            (addTodoTask)="addChild($event)"></my-todo>
+            (addTodoTaskOrder)="addChildOrder($event)"></my-todo>
     </li>
 </ul>

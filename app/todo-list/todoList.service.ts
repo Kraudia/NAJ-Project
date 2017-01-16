@@ -11,22 +11,11 @@ export class TodoService {
     }
 
     getTodos (categoryId: string) : Observable<TodoTask[]> {
-        return this.http.get('app/todo-list/todoList.json')
-            .map((res) => this.extractData(res, categoryId));
-    }
-
-    private extractData(res: Response, categoryId: string) {
-        let body = res.json();
         if (categoryId) {
-          for (var i=0; i<todo.length; i++){
-            for (var j=0; i<todo[i].categoryIds.length; j++){
-              if (todo[i].categoryIds[j] === categoryId){
-                return todos[i];
-              }
-            }
+          return this.http.get('api/movies'+categoryId).res.json();
           } || { };
         } else {
-            return body.data || { };
+            return this.http.get('api/movies').res.json() || { };
         }
   }
 }

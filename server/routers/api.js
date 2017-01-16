@@ -3,7 +3,6 @@ const router = require('express').Router(),
       _ = require('lodash');
 
 router.get('/about', (req, res) => {
-    res.sendFile('D:/DoSzkoły/informatyka/5 sem/naj/probnePrzedProjektem/Project/app/about/about.component.html');
     res.json({
         name: 'Wypożyczalnia wideo "Pod 7 kotami"',
         hours: {

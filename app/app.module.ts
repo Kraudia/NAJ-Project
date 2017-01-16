@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { OrderListComponent } from './todo-list/order-list.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [ 
+    imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
     ],
