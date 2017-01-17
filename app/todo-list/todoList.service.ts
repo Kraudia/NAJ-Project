@@ -12,10 +12,21 @@ export class TodoService {
 
     getTodos (categoryId: string) : Observable<TodoTask[]> {
         if (categoryId) {
-          return this.http.get('api/movies'+categoryId).res.json();
-          } || { };
+          return this.http.get('api/movies'+categoryId).res.json() || { };
         } else {
             return this.http.get('api/movies').res.json() || { };
         }
+    }
+
+    getTodos1 () : Observable<TodoTask[]> {
+        return this.http.get('api/movies')
+            .map(this.extractData1);
+    }
+
+    private extractData1(res: Response) {
+        let body = res.json();
+        return body.data || { };
   }
+
+
 }

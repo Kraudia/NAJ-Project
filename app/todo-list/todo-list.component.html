@@ -11,3 +11,10 @@ Movies
             (addTodoTaskOrder)="addChildOrder($event)"></my-todo>
     </li>
 </ul>
+Basket
+<ul>
+    <li *ngFor="let todoTaskInsideFor of order">
+        <my-todo [todoTask]="todoTaskInsideFor"
+            (addTodoTaskOrder)="addChildOrder($event)"></my-todo>
+    </li>
+</ul>
