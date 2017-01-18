@@ -20,14 +20,9 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit () {
-        this.activatedRoute.params.subscribe((param) => {
-            this.todoService.getTodos(param.categoryId).subscribe(
+        this.todoService.getTodos1().subscribe(
                 b => this.todos = b
             );
-        });
-        this.todoService.getTodos1().subscribe(
-            data => this.order = data
-        );
     }
 
     addChildOrder (taskToAddOrder: TodoTask) {

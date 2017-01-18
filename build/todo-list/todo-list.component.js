@@ -16,25 +16,14 @@ var TodoListComponent = (function () {
         this.todoService = todoService;
         this.activatedRoute = activatedRoute;
         this.todos = [];
+        this.order = [];
     }
     TodoListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.activatedRoute.params.subscribe(function (param) {
-            _this.todoService.getTodos(param.count).subscribe(function (data) { return _this.todos = data; });
-        });
+        this.todoService.getTodos1().subscribe(function (b) { return _this.todos = b; });
     };
-    TodoListComponent.prototype.addNewTask = function () {
-        var newTask = {
-            name: this.newTodoTaskName,
-            categoryIds: ["adventure", "fantasy"],
-            count: 1,
-            fee: 3.99
-        };
-        this.todos.push(newTask);
-    };
-    TodoListComponent.prototype.removeChild = function (taskToRemove) {
-        var index = this.todos.indexOf(taskToRemove);
-        this.todos.splice(index, 1);
+    TodoListComponent.prototype.addChildOrder = function (taskToAddOrder) {
+        this.order.push(taskToAddOrder);
     };
     return TodoListComponent;
 }());

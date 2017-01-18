@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var TodoComponent = (function () {
     function TodoComponent() {
-        this.removeTodoTask = new core_1.EventEmitter();
+        this.addTodoTaskOrder = new core_1.EventEmitter();
     }
-    TodoComponent.prototype.removeTask = function () {
-        this.removeTodoTask.emit(this.todoTask);
+    TodoComponent.prototype.addTaskOrder = function () {
+        this.addTodoTaskOrder.emit(this.todoTask);
     };
     return TodoComponent;
 }());
@@ -25,7 +25,7 @@ __decorate([
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], TodoComponent.prototype, "removeTodoTask", void 0);
+], TodoComponent.prototype, "addTodoTaskOrder", void 0);
 TodoComponent = __decorate([
     core_1.Component({
         selector: 'my-todo',

@@ -19,13 +19,15 @@ export class TodoService {
     }
 
     getTodos1 () : Observable<TodoTask[]> {
-        return this.http.get('api/movies')
+        return this.http.get('/api/movies')
             .map(this.extractData1);
     }
 
     private extractData1(res: Response) {
         let body = res.json();
-        return body.data || { };
+        console.log(res.json());
+        console.log("sprawdzam");
+        return body || { };
   }
 
 

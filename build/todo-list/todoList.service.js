@@ -15,21 +15,23 @@ var TodoService = (function () {
     function TodoService(http) {
         this.http = http;
     }
-    TodoService.prototype.getTodos = function (count) {
-        var _this = this;
-        return this.http.get('app/todo-list/todoList.json')
-            .map(function (res) { return _this.extractData(res, count); });
-    };
-    TodoService.prototype.extractData = function (res, count) {
-        var body = res.json();
-        if (count) {
-            return body.data.filter(function (todo) {
-                return todo.count === count;
-            }) || {};
+    TodoService.prototype.getTodos = function (categoryId) {
+        if (categoryId) {
+            return this.http.get('api/movies' + categoryId).res.json() || {};
         }
         else {
-            return body.data || {};
+            return this.http.get('api/movies').res.json() || {};
         }
+    };
+    TodoService.prototype.getTodos1 = function () {
+        return this.http.get('/api/movies')
+            .map(this.extractData1);
+    };
+    TodoService.prototype.extractData1 = function (res) {
+        var body = res.json();
+        console.log(res.json());
+        console.log("sprawdzam");
+        return body || {};
     };
     return TodoService;
 }());
