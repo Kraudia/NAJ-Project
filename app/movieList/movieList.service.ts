@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { TodoTask } from './todo.model';
+import { MovieFilm } from './movie.model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class TodoService {
+export class MovieService {
 
     constructor(private http: Http) {
     }
 
-    getTodos (categoryId: string) : Observable<TodoTask[]> {
+    getMovies (categoryId: string) : Observable<MovieFilm[]> {
         if (categoryId) {
-          return this.http.get('api/movies'+categoryId).res.json() || { };
+          return this.http.get('/api/movies'+categoryId).res.json() || { };
         } else {
-            return this.http.get('api/movies').res.json() || { };
+            return this.http.get('/api/movies').res.json() || { };
         }
     }
 
-    getTodos1 () : Observable<TodoTask[]> {
+    getMovies1 () : Observable<MovieFilm[]> {
         return this.http.get('/api/movies')
             .map(this.extractData1);
     }

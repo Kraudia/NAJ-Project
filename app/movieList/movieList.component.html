@@ -6,15 +6,15 @@
 </div>
 Movies
 <ul>
-    <li *ngFor="let todoTaskInsideFor of todos">
-        <my-todo [todoTask]="todoTaskInsideFor"
-            (addTodoTaskOrder)="addChildOrder($event)"></my-todo>
+    <li *ngFor="let movieFilmInsideFor of movies">
+        <myMovie [movieFilm]="movieFilmInsideFor"
+            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
     </li>
 </ul>
 Basket
 <ul>
-    <li *ngFor="let todoTaskInsideFor of order">
-        <my-todo [todoTask]="todoTaskInsideFor"
-            (addTodoTaskOrder)="addChildOrder($event)"></my-todo>
+    <li *ngFor="let movieFilmInsideFor of order">
+        <myMovie [movieFilm]="movieFilmInsideFor"
+            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
     </li>
 </ul>

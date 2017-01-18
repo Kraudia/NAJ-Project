@@ -13,7 +13,7 @@ var AboutComponent = (function () {
 }());
 AboutComponent = __decorate([
     core_1.Component({
-        selector: 'my-about',
+        selector: 'myAbout',
         templateUrl: 'app/about/about.component.html',
         styleUrls: ['app/about/about.component.css']
     })

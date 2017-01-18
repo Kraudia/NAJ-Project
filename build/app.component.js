@@ -13,7 +13,7 @@ var AppComponent = (function () {
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
+        selector: 'myApp',
         templateUrl: 'app/app.component.html',
         styleUrls: ['app/app.component.css']
     })
