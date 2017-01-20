@@ -20,9 +20,11 @@ export class MovieListComponent implements OnInit {
     }
 
     ngOnInit () {
-        this.movieService.getMovies1().subscribe(
-                b => this.movies = b
+        this.activatedRoute.params.subscribe((param) => {
+            this.movieService.getMovies(param.priority).subscribe(
+                data => this.movies = data
             );
+        });
     }
 
     addChildOrder (filmToAddOrder: MovieFilm) {

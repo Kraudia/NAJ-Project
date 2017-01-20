@@ -12,23 +12,29 @@ export class MovieService {
 
     getMovies (categoryId: string) : Observable<MovieFilm[]> {
         if (categoryId) {
-          return this.http.get('/api/movies'+categoryId).res.json() || { };
+          return this.http.get('/api/movies/'+categoryId)
+              .map((res) => res.json());
         } else {
-            return this.http.get('/api/movies').res.json() || { };
+            return this.http.get('/api/movies')
+                .map((res) => res.json());
         }
+    }
+
+    private extractData(res: Response) {
+      let body = res.json();
+      console.log(res.json());
+      if (categoryId) {
+          return res.json();
+      } else {
+          return res.json();
+      }
+      return getted.res.json() || { };
     }
 
     getMovies1 () : Observable<MovieFilm[]> {
         return this.http.get('/api/movies')
-            .map(this.extractData1);
+            .map((res) => res.json());
     }
-
-    private extractData1(res: Response) {
-        let body = res.json();
-        console.log(res.json());
-        console.log("sprawdzam");
-        return body || { };
-  }
 
 
 }

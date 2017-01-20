@@ -20,7 +20,9 @@ var MovieListComponent = (function () {
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.movieService.getMovies1().subscribe(function (b) { return _this.movies = b; });
+        this.activatedRoute.params.subscribe(function (param) {
+            _this.movieService.getMovies(param.priority).subscribe(function (data) { return _this.movies = data; });
+        });
     };
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         this.order.push(filmToAddOrder);

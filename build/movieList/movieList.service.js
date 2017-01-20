@@ -17,21 +17,28 @@ var MovieService = (function () {
     }
     MovieService.prototype.getMovies = function (categoryId) {
         if (categoryId) {
-            return this.http.get('/api/movies' + categoryId).res.json() || {};
+            return this.http.get('/api/movies/' + categoryId)
+                .map(function (res) { return res.json(); });
         }
         else {
-            return this.http.get('/api/movies').res.json() || {};
+            return this.http.get('/api/movies')
+                .map(function (res) { return res.json(); });
         }
+    };
+    MovieService.prototype.extractData = function (res) {
+        var body = res.json();
+        console.log(res.json());
+        if (categoryId) {
+            return res.json();
+        }
+        else {
+            return res.json();
+        }
+        return getted.res.json() || {};
     };
     MovieService.prototype.getMovies1 = function () {
         return this.http.get('/api/movies')
-            .map(this.extractData1);
-    };
-    MovieService.prototype.extractData1 = function (res) {
-        var body = res.json();
-        console.log(res.json());
-        console.log("sprawdzam");
-        return body || {};
+            .map(function (res) { return res.json(); });
     };
     return MovieService;
 }());
