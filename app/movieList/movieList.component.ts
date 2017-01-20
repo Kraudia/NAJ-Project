@@ -27,21 +27,14 @@ export class MovieListComponent implements OnInit {
             this.movieService.getCategories().subscribe(
                 data => {
                 this.categoriesAll = data;
-                console.log("getCategories");
-                console.log(data);
-                }
-                
-                
+                } 
             );
         });
         this.activatedRoute.params.subscribe((param) => {
             this.movieService.getMovies(param.priority).subscribe(
                 data => {
                 this.movies = data;
-                 console.log("getMovies");
-                console.log(data);
                 }
-               
             );
         });
     }

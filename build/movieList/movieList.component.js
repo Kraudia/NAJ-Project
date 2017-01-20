@@ -24,15 +24,11 @@ var MovieListComponent = (function () {
         this.activatedRoute.params.subscribe(function () {
             _this.movieService.getCategories().subscribe(function (data) {
                 _this.categoriesAll = data;
-                console.log("getCategories");
-                console.log(data);
             });
         });
         this.activatedRoute.params.subscribe(function (param) {
             _this.movieService.getMovies(param.priority).subscribe(function (data) {
                 _this.movies = data;
-                console.log("getMovies");
-                console.log(data);
             });
         });
     };
