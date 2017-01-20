@@ -2,5 +2,10 @@
     "adventure": "Adventure",
     "fantasy": "Fantasy",
     "sciFi": "Science Fiction",
-    "comedy": "Comedy"
+    "comedy": "Comedy",
+	"drama": "Drama",
+	"family": "Family",
+	"crime": "Crime",
+	"action": "Action",
+	"romance": "Romance"	
 }

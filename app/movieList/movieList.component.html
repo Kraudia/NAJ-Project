@@ -1,0 +1,25 @@
+<div>
+    <a href routerLink="/list/adventure" routerLinkActive="active">{{categoriesAll.adventure}}</a>
+    <a href routerLink="/list/fantasy" routerLinkActive="active">{{categoriesAll.fantasy}}</a>
+    <a href routerLink="/list/sciFi" routerLinkActive="active">{{categoriesAll.sciFi}}</a>
+    <a href routerLink="/list/comedy" routerLinkActive="active">{{categoriesAll.comedy}}</a>
+    <a href routerLink="/list/drama" routerLinkActive="active">{{categoriesAll.drama}}</a>
+    <a href routerLink="/list/family" routerLinkActive="active">{{categoriesAll.family}}</a>
+    <a href routerLink="/list/crime" routerLinkActive="active">{{categoriesAll.crime}}</a>
+    <a href routerLink="/list/action" routerLinkActive="active">{{categoriesAll.action}}</a>
+    <a href routerLink="/list/romance" routerLinkActive="active">{{categoriesAll.romance}}</a>
+</div>
+Movies
+<ul>
+    <li *ngFor="let movieFilmInsideFor of movies">
+        <myMovie [movieFilm]="movieFilmInsideFor"
+            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
+    </li>
+</ul>
+Basket
+<ul>
+    <li *ngFor="let movieFilmInsideFor of order">
+        <myMovie [movieFilm]="movieFilmInsideFor"
+            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
+    </li>
+</ul>

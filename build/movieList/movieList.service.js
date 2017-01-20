@@ -11,33 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var TodoService = (function () {
-    function TodoService(http) {
+var MovieService = (function () {
+    function MovieService(http) {
         this.http = http;
     }
-    TodoService.prototype.getTodos = function (categoryId) {
+    MovieService.prototype.getCategories = function () {
+        return this.http.get('/api/categories')
+            .map(function (res) { return res.json(); });
+    };
+    MovieService.prototype.getMovies = function (categoryId) {
         if (categoryId) {
-            return this.http.get('api/movies' + categoryId).res.json() || {};
+            return this.http.get('/api/movies/' + categoryId)
+                .map(function (res) { return res.json(); });
         }
         else {
-            return this.http.get('api/movies').res.json() || {};
+            return this.http.get('/api/movies')
+                .map(function (res) { return res.json(); });
         }
     };
-    TodoService.prototype.getTodos1 = function () {
-        return this.http.get('/api/movies')
-            .map(this.extractData1);
-    };
-    TodoService.prototype.extractData1 = function (res) {
-        var body = res.json();
-        console.log(res.json());
-        console.log("sprawdzam");
-        return body || {};
-    };
-    return TodoService;
+    return MovieService;
 }());
-TodoService = __decorate([
+MovieService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], TodoService);
-exports.TodoService = TodoService;
-//# sourceMappingURL=todoList.service.js.map
+], MovieService);
+exports.MovieService = MovieService;
+//# sourceMappingURL=movieList.service.js.map

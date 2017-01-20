@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var HeaderComponent = (function () {
     function HeaderComponent() {
-        this.meassage = 'SIEMANO';
+        this.meassage = 'Witaj!';
     }
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
     core_1.Component({
-        selector: 'my-header',
+        selector: 'myHeader',
         templateUrl: 'app/header/header.component.html',
         styleUrls: ['app/header/header.component.css']
     })

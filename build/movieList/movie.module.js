@@ -9,20 +9,20 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
-var todo_list_component_1 = require("./todo-list.component");
-var todo_component_1 = require("./todo.component");
-var todoList_service_1 = require("./todoList.service");
+var movieList_component_1 = require("./movieList.component");
+var movie_component_1 = require("./movie.component");
+var movieList_service_1 = require("./movieList.service");
 var router_1 = require("@angular/router");
 var routes = [
-    { path: '', component: todo_list_component_1.TodoListComponent },
-    { path: ':priority', component: todo_list_component_1.TodoListComponent },
+    { path: '', component: movieList_component_1.MovieListComponent },
+    { path: ':priority', component: movieList_component_1.MovieListComponent },
 ];
-var TodoModule = (function () {
-    function TodoModule() {
+var MovieModule = (function () {
+    function MovieModule() {
     }
-    return TodoModule;
+    return MovieModule;
 }());
-TodoModule = __decorate([
+MovieModule = __decorate([
     core_1.NgModule({
         imports: [
             common_1.CommonModule,
@@ -30,10 +30,10 @@ TodoModule = __decorate([
             forms_1.FormsModule,
             router_1.RouterModule.forChild(routes)
         ],
-        declarations: [todo_list_component_1.TodoListComponent, todo_component_1.TodoComponent],
-        exports: [todo_list_component_1.TodoListComponent],
-        providers: [todoList_service_1.TodoService]
+        declarations: [movieList_component_1.MovieListComponent, movie_component_1.MovieComponent],
+        exports: [movieList_component_1.MovieListComponent],
+        providers: [movieList_service_1.MovieService]
     })
-], TodoModule);
-exports.TodoModule = TodoModule;
-//# sourceMappingURL=todo.module.js.map
+], MovieModule);
+exports.MovieModule = MovieModule;
+//# sourceMappingURL=movie.module.js.map

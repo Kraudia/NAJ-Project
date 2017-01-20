@@ -16,5 +16,58 @@
         "categoryIds": ["sciFi", "adventure"],
         "count": 3,
         "fee": 5.99
+    },
+	{
+        "name": "Forrest Gump",
+        "categoryIds": ["comedy", "drama"],
+        "count": 1,
+        "fee": 3.89
+    },
+    {
+        "name": "Harry Potter",
+        "categoryIds": ["fantasy", "adventure", "family"],
+        "count": 4,
+        "fee": 5.79
+    },	{
+        "name": "Fantastic Beasts and Where to Find Them",
+        "categoryIds": ["fantasy", "adventure", "family"],
+        "count": 2,
+        "fee": 4.99
+    },
+    {
+        "name": "Matrix",
+        "categoryIds": ["action", "sciFi"],
+        "count": 3,
+        "fee": 5.99
+    },
+		{
+        "name": "Hunger Games",
+        "categoryIds": ["action", "sciFi", "adventure"],
+        "count": 1,
+        "fee": 8.99
+    },
+    {
+        "name": "Mr. Bean",
+        "categoryIds": ["comedy", "family"],
+        "count": 2,
+        "fee": 2.99
+    },
+	{
+        "name": "P.S. I Love You",
+        "categoryIds": ["drama", "romance"],
+        "count": 2,
+        "fee": 4.15
+    },
+	{
+        "name": "Notebook",
+        "categoryIds": ["drama", "romance"],
+        "count": 2,
+        "fee": 4.99
+    },
+	{
+        "name": "Miss Agent",
+        "categoryIds": ["comedy", "action", "crime"],
+        "count": 2,
+        "fee": 2.99
     }
 ]

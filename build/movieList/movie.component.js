@@ -9,28 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var TodoComponent = (function () {
-    function TodoComponent() {
-        this.addTodoTaskOrder = new core_1.EventEmitter();
+var MovieComponent = (function () {
+    function MovieComponent() {
+        this.addmovieFilmOrder = new core_1.EventEmitter();
     }
-    TodoComponent.prototype.addTaskOrder = function () {
-        this.addTodoTaskOrder.emit(this.todoTask);
+    MovieComponent.prototype.addFilmOrder = function () {
+        this.addmovieFilmOrder.emit(this.movieFilm);
     };
-    return TodoComponent;
+    return MovieComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
-], TodoComponent.prototype, "todoTask", void 0);
+], MovieComponent.prototype, "movieFilm", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], TodoComponent.prototype, "addTodoTaskOrder", void 0);
-TodoComponent = __decorate([
+], MovieComponent.prototype, "addmovieFilmOrder", void 0);
+MovieComponent = __decorate([
     core_1.Component({
-        selector: 'my-todo',
-        templateUrl: 'app/todo-list/todo.component.html'
+        selector: 'myMovie',
+        templateUrl: 'app/movieList/movie.component.html'
     })
-], TodoComponent);
-exports.TodoComponent = TodoComponent;
-//# sourceMappingURL=todo.component.js.map
+], MovieComponent);
+exports.MovieComponent = MovieComponent;
+//# sourceMappingURL=movie.component.js.map

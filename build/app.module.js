@@ -13,7 +13,7 @@ var about_component_1 = require("./about/about.component");
 var router_1 = require("@angular/router");
 var routes = [
     { path: '', redirectTo: 'about', pathMatch: 'full' },
-    { path: 'list', loadChildren: 'app/todo-list/todo.module#TodoModule' },
+    { path: 'list', loadChildren: 'app/movieList/movie.module#MovieModule' },
     { path: 'about', component: about_component_1.AboutComponent },
 ];
 var AppModule = (function () {

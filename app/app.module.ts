@@ -5,18 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { MovieListComponent } from './movieList/movieList.component';
+
 
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     { path: '', redirectTo: 'about', pathMatch: 'full' },
-    { path: 'list', loadChildren: 'app/todo-list/todo.module#TodoModule' },
+    { path: 'list', loadChildren: 'app/movieList/movie.module#MovieModule' },
     { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
-    imports: [ 
+    imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
     ],
