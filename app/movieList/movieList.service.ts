@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MovieFilm } from './movie.model';
+import { CategoriesAll } from './categories.model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
@@ -10,6 +11,11 @@ export class MovieService {
     constructor(private http: Http) {
     }
 
+    getCategories () : Observable<CategoriesAll> {
+        return this.http.get('/api/categories')
+            .map((res) => res.json());
+    }
+
     getMovies (categoryId: string) : Observable<MovieFilm[]> {
         if (categoryId) {
           return this.http.get('/api/movies/'+categoryId)
@@ -18,22 +24,6 @@ export class MovieService {
             return this.http.get('/api/movies')
                 .map((res) => res.json());
         }
-    }
-
-    private extractData(res: Response) {
-      let body = res.json();
-      console.log(res.json());
-      if (categoryId) {
-          return res.json();
-      } else {
-          return res.json();
-      }
-      return getted.res.json() || { };
-    }
-
-    getMovies1 () : Observable<MovieFilm[]> {
-        return this.http.get('/api/movies')
-            .map((res) => res.json());
     }
 
 

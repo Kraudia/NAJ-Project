@@ -15,6 +15,10 @@ var MovieService = (function () {
     function MovieService(http) {
         this.http = http;
     }
+    MovieService.prototype.getCategories = function () {
+        return this.http.get('/api/categories')
+            .map(function (res) { return res.json(); });
+    };
     MovieService.prototype.getMovies = function (categoryId) {
         if (categoryId) {
             return this.http.get('/api/movies/' + categoryId)
@@ -24,21 +28,6 @@ var MovieService = (function () {
             return this.http.get('/api/movies')
                 .map(function (res) { return res.json(); });
         }
-    };
-    MovieService.prototype.extractData = function (res) {
-        var body = res.json();
-        console.log(res.json());
-        if (categoryId) {
-            return res.json();
-        }
-        else {
-            return res.json();
-        }
-        return getted.res.json() || {};
-    };
-    MovieService.prototype.getMovies1 = function () {
-        return this.http.get('/api/movies')
-            .map(function (res) { return res.json(); });
     };
     return MovieService;
 }());

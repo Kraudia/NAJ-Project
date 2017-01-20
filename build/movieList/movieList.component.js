@@ -20,6 +20,9 @@ var MovieListComponent = (function () {
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.activatedRoute.params.subscribe(function () {
+            _this.movieService.getCategories().subscribe(function (data) { return _this.categoriesAll = data; });
+        });
         this.activatedRoute.params.subscribe(function (param) {
             _this.movieService.getMovies(param.priority).subscribe(function (data) { return _this.movies = data; });
         });
