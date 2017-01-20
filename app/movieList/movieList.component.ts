@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieFilm } from './movie.model';
 import { MovieService } from './movieList.service';
 import { ActivatedRoute } from '@angular/router';
-import { categoriesAll } from './categories.model';
+import { CategoriesAll } from './categories.model';
 
 @Component({
     selector: 'myMovieList',
@@ -10,9 +10,9 @@ import { categoriesAll } from './categories.model';
 })
 export class MovieListComponent implements OnInit {
 
-    public movies:Array<MovieFilm> = [];
-    public order:Array<MovieFilm> = [];
-    public categoriesAll:categoriesAll = {};
+    public movies: Array<MovieFilm> = [];
+    public order: Array<MovieFilm> = [];
+    public categoriesAll: CategoriesAll = {};
 
     public newMovieFilmName: string;
 
@@ -26,14 +26,15 @@ export class MovieListComponent implements OnInit {
         this.activatedRoute.params.subscribe(() => {
             this.movieService.getCategories().subscribe(
                 data => {
-                this.categoriesAll = data;
+                    this.categoriesAll = data;
                 } 
             );
         });
+        
         this.activatedRoute.params.subscribe((param) => {
             this.movieService.getMovies(param.priority).subscribe(
                 data => {
-                this.movies = data;
+                    this.movies = data;
                 }
             );
         });
@@ -42,6 +43,4 @@ export class MovieListComponent implements OnInit {
     addChildOrder (filmToAddOrder: MovieFilm) {
         this.order.push(filmToAddOrder);
     }
-
-
 }

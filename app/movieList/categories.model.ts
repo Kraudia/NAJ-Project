@@ -1,4 +1,4 @@
-export interface categoriesAll {
+export interface CategoriesAll {
     adventure: string,
     fantasy: string,
     sciFi: string,

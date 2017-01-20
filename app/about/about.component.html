@@ -1,21 +1,14 @@
 <div>
-   <h1>O Nas</h1>
-   <h2>'Wypożyczalnia wideo "Pod 7 kotami"</h2>
-   <br>
-   hours:
-   <br>
-       monday: "9:00 - 19:00",
-       <br>
-       thusday: "9:00 - 19:00",
-       <br>
-       wednesday: "9:00 - 19:00",
-       <br>
-       thursday: "9:00 - 19:00",
-       <br>
-       friday: "9:00 - 19:00",
-       <br>
-       saturday: "11:00 - 15:00",
-       <br>
-       sunday: "Zamknięte"
-       <br>
+   <h2>{{ aboutInfo.name }}</h2>
+   <h3>Otwarte:</h3>
+
+   <ul>
+      <li>Poniedziałek: {{aboutHours.monday}}</li>
+      <li>Wtorek: {{aboutHours.tuesday}}</li>
+      <li>Środa: {{aboutHours.wednesday}}</li>
+      <li>Czwartek: {{aboutHours.thursday}}</li>
+      <li>Piątek: {{aboutHours.friday}}</li>
+      <li>Sobota: {{aboutHours.saturday}}</li>
+      <li>Niedziela: {{aboutHours.sunday}}</li>
+   </ul>
 </div>

@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./header/header.component");
 var about_component_1 = require("./about/about.component");
@@ -14,7 +15,7 @@ var router_1 = require("@angular/router");
 var routes = [
     { path: '', redirectTo: 'about', pathMatch: 'full' },
     { path: 'list', loadChildren: 'app/movieList/movie.module#MovieModule' },
-    { path: 'about', component: about_component_1.AboutComponent },
+    { path: 'about', component: about_component_1.AboutComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -25,7 +26,8 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            router_1.RouterModule.forRoot(routes),
+            http_1.HttpModule,
+            router_1.RouterModule.forRoot(routes)
         ],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, about_component_1.AboutComponent],
         bootstrap: [app_component_1.AppComponent]

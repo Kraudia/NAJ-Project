@@ -1,6 +1,6 @@
-export interface movieFilm {
+export interface MovieFilm {
     name: string,
-    categoryIds: [],
-    count: integer,
-    fee: integer
+    categoryIds: Array<string>,
+    count: number,
+    fee: number
 }

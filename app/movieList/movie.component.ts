@@ -1,15 +1,15 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { movieFilm } from './movie.model';
+import { MovieFilm } from './movie.model';
 
 @Component({
     selector: 'myMovie',
     templateUrl: 'app/movieList/movie.component.html'
 })
 export class MovieComponent {
-    @Input() public movieFilm: movieFilm;
+    @Input() public movieFilm: MovieFilm;
 
-    @Output() addmovieFilmOrder : EventEmitter<movieFilm> =
-        new EventEmitter<movieFilm>();
+    @Output() addmovieFilmOrder : EventEmitter<MovieFilm> =
+        new EventEmitter<MovieFilm>();
 
 
     addFilmOrder () {
