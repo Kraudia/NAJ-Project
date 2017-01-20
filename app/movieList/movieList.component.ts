@@ -12,7 +12,7 @@ export class MovieListComponent implements OnInit {
 
     public movies:Array<MovieFilm> = [];
     public order:Array<MovieFilm> = [];
-    public categoriesAll:categoriesAll;
+    public categoriesAll:categoriesAll = {};
 
     public newMovieFilmName: string;
 
@@ -25,12 +25,23 @@ export class MovieListComponent implements OnInit {
     ngOnInit () {
         this.activatedRoute.params.subscribe(() => {
             this.movieService.getCategories().subscribe(
-                data => this.categoriesAll = data
+                data => {
+                this.categoriesAll = data;
+                console.log("getCategories");
+                console.log(data);
+                }
+                
+                
             );
         });
         this.activatedRoute.params.subscribe((param) => {
             this.movieService.getMovies(param.priority).subscribe(
-                data => this.movies = data
+                data => {
+                this.movies = data;
+                 console.log("getMovies");
+                console.log(data);
+                }
+               
             );
         });
     }

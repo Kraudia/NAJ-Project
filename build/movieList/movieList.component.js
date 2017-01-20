@@ -17,14 +17,23 @@ var MovieListComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.movies = [];
         this.order = [];
+        this.categoriesAll = {};
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function () {
-            _this.movieService.getCategories().subscribe(function (data) { return _this.categoriesAll = data; });
+            _this.movieService.getCategories().subscribe(function (data) {
+                _this.categoriesAll = data;
+                console.log("getCategories");
+                console.log(data);
+            });
         });
         this.activatedRoute.params.subscribe(function (param) {
-            _this.movieService.getMovies(param.priority).subscribe(function (data) { return _this.movies = data; });
+            _this.movieService.getMovies(param.priority).subscribe(function (data) {
+                _this.movies = data;
+                console.log("getMovies");
+                console.log(data);
+            });
         });
     };
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
