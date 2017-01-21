@@ -8,11 +8,14 @@ import { MovieFilm } from './movie.model';
 export class MovieComponent {
     @Input() public movieFilm: MovieFilm;
 
-    @Output() addmovieFilmOrder : EventEmitter<MovieFilm> =
+    @Output() orderMovieFilm : EventEmitter<MovieFilm> =
         new EventEmitter<MovieFilm>();
 
-
     addFilmOrder () {
-        this.addmovieFilmOrder.emit(this.movieFilm);
+        this.orderMovieFilm.emit(this.movieFilm);
+    }
+
+    removeFilmOrder () {
+        this.removeMovieFilmOrder.emit(this.todoTask);
     }
 }

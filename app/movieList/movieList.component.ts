@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieFilm } from './movie.model';
+import { OrderedMovieFilm } from './order.model';
 import { MovieService } from './movieList.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesAll } from './categories.model';
@@ -18,8 +19,6 @@ export class MovieListComponent implements OnInit {
 
     constructor(private movieService: MovieService,
         private activatedRoute: ActivatedRoute) {
-
-
     }
 
     ngOnInit () {
@@ -40,7 +39,13 @@ export class MovieListComponent implements OnInit {
         });
     }
 
-    addChildOrder (filmToAddOrder: MovieFilm) {
-        this.order.push(filmToAddOrder);
+    addChildOrder(filmToAddOrder: MovieFilm) {
+        let index: number = this.movies.indexOf(filmToAddOrder);
+        this.order.push(this.movies[index]);
+    }
+
+    removeChildOrder (filmToRemoveOrder: MovieFilm) {
+        let index: number = this.order.indexOf(filmToRemoveOrder);
+        this.order.splice(index, 1);
     }
 }

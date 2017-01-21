@@ -33,7 +33,12 @@ var MovieListComponent = (function () {
         });
     };
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
-        this.order.push(filmToAddOrder);
+        var index = this.movies.indexOf(filmToAddOrder);
+        this.order.push(this.movies[index]);
+    };
+    MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
+        var index = this.order.indexOf(filmToRemoveOrder);
+        this.order.splice(index, 1);
     };
     return MovieListComponent;
 }());

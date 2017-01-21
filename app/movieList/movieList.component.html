@@ -13,13 +13,13 @@ Movies
 <ul>
     <li *ngFor="let movieFilmInsideFor of movies">
         <myMovie [movieFilm]="movieFilmInsideFor"
-            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
+            (orderMovieFilm)="addChildOrder($event)"></myMovie>
     </li>
 </ul>
 Basket
 <ul>
     <li *ngFor="let movieFilmInsideFor of order">
-        <myMovie [movieFilm]="movieFilmInsideFor"
-            (addMovieFilmOrder)="addChildOrder($event)"></myMovie>
+        <myOrder [orderedMovieFilm]="movieFilmInsideFor"
+            (removeMovieFilmOrder)="removeChildOrder($event)"></myOrder>
     </li>
 </ul>

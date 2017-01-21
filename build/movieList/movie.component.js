@@ -11,10 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var MovieComponent = (function () {
     function MovieComponent() {
-        this.addmovieFilmOrder = new core_1.EventEmitter();
+        this.orderMovieFilm = new core_1.EventEmitter();
     }
     MovieComponent.prototype.addFilmOrder = function () {
-        this.addmovieFilmOrder.emit(this.movieFilm);
+        this.orderMovieFilm.emit(this.movieFilm);
+    };
+    MovieComponent.prototype.removeFilmOrder = function () {
+        this.removeMovieFilmOrder.emit(this.todoTask);
     };
     return MovieComponent;
 }());
@@ -25,7 +28,7 @@ __decorate([
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], MovieComponent.prototype, "addmovieFilmOrder", void 0);
+], MovieComponent.prototype, "orderMovieFilm", void 0);
 MovieComponent = __decorate([
     core_1.Component({
         selector: 'myMovie',

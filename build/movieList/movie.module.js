@@ -11,6 +11,7 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var movieList_component_1 = require("./movieList.component");
 var movie_component_1 = require("./movie.component");
+var order_component_1 = require("./order.component");
 var movieList_service_1 = require("./movieList.service");
 var router_1 = require("@angular/router");
 var routes = [
@@ -30,7 +31,7 @@ MovieModule = __decorate([
             forms_1.FormsModule,
             router_1.RouterModule.forChild(routes)
         ],
-        declarations: [movieList_component_1.MovieListComponent, movie_component_1.MovieComponent],
+        declarations: [movieList_component_1.MovieListComponent, movie_component_1.MovieComponent, order_component_1.OrderComponent],
         exports: [movieList_component_1.MovieListComponent],
         providers: [movieList_service_1.MovieService]
     })

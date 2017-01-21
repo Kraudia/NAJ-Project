@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MovieListComponent } from './movieList.component';
 import { MovieComponent } from './movie.component';
+import { OrderComponent } from './order.component';
 import { MovieService } from './movieList.service';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -21,7 +22,7 @@ const routes: Routes = [
         FormsModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [ MovieListComponent, MovieComponent ],
+    declarations: [ MovieListComponent, MovieComponent, OrderComponent ],
     exports: [ MovieListComponent ],
     providers: [ MovieService ]
 })
