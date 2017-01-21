@@ -3,18 +3,7 @@ const router = require('express').Router(),
       _ = require('lodash');
 
 router.get('/about', (req, res) => {
-    res.json({
-        name: 'Wypożyczalnia wideo "Pod 7 kotami"',
-        hours: {
-            monday: "9:00 - 19:00",
-            thusday: "9:00 - 19:00",
-            wednesday: "9:00 - 19:00",
-            thursday: "9:00 - 19:00",
-            friday: "9:00 - 19:00",
-            saturday: "11:00 - 15:00",
-            sunday: "Zamknięte"
-        }
-    });
+    res.json(storage.getAbout());
 });
 
 router.get('/categories', (req, res) => {

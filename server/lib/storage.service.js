@@ -2,9 +2,13 @@ const _ = require('lodash');
 
 const borrowedCountDict = {},
       movies = parseMovieList(require('./../data/movies.json')),
-      categories = require('./../data/categories.json');
+      categories = require('./../data/categories.json'),
+      about = require('./../data/about.json');
 
 module.exports = {
+    getAbout() {
+        return about;
+    },
     getAllMovies: function() {
         return mapMovies(movies);
     },

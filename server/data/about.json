@@ -1,0 +1,12 @@
+{
+    "name": "Wypożyczalnia wideo \"Pod 7 kotami\"",
+    "hours": {
+        "monday": "9:00 - 19:00",
+        "tuesday": "9:00 - 19:00",
+        "wednesday": "9:00 - 19:00",
+        "thursday": "9:00 - 19:00",
+        "friday": "9:00 - 19:00",
+        "saturday": "11:00 - 15:00",
+        "sunday": "Zamknięte"
+    }
+}
