@@ -24,3 +24,6 @@ Basket
             (removeMovieFilmOrder)="removeChildOrder($event)"></myOrderedMovie>
     </li>
 </ul>
+<div>
+  Total cost: {{total | currency:'USD':true:'1.2-2' }}
+</div>

@@ -18,6 +18,7 @@ var MovieListComponent = (function () {
         this.movies = [];
         this.order = [];
         this.categoriesAll = {};
+        this.total = 0;
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -35,10 +36,22 @@ var MovieListComponent = (function () {
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         var index = this.movies.indexOf(filmToAddOrder);
         this.order.push(this.movies[index]);
+        this.sumTotalFee();
     };
     MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
         var index = this.order.indexOf(filmToRemoveOrder);
         this.order.splice(index, 1);
+        this.sumTotalFee();
+    };
+    MovieListComponent.prototype.sumTotalFee = function () {
+        var _this = this;
+        this.total = 0;
+        if (this.order.length > 0) {
+            this.order.forEach(function (element) {
+                _this.total = _this.total + element.fee;
+            });
+        }
+        console.log(this.total);
     };
     return MovieListComponent;
 }());

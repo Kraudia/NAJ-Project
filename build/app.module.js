@@ -15,7 +15,7 @@ var about_component_1 = require("./about/about.component");
 var order_component_1 = require("./order/order.component");
 var router_1 = require("@angular/router");
 var routes = [
-    { path: '', redirectTo: 'about', pathMatch: 'full' },
+    { path: '', redirectTo: 'list', pathMatch: 'full' },
     { path: 'list', loadChildren: 'app/movieList/movie.module#MovieModule' },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'order', component: order_component_1.OrderComponent }

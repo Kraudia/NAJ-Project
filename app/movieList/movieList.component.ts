@@ -14,7 +14,7 @@ export class MovieListComponent implements OnInit {
     public movies: Array<MovieFilm> = [];
     public order: Array<MovieFilm> = [];
     public categoriesAll: CategoriesAll = {};
-
+    public total: number = 0;
     public newMovieFilmName: string;
 
     constructor(private movieService: MovieService,
@@ -26,10 +26,10 @@ export class MovieListComponent implements OnInit {
             this.movieService.getCategories().subscribe(
                 data => {
                     this.categoriesAll = data;
-                } 
+                }
             );
         });
-        
+
         this.activatedRoute.params.subscribe((param) => {
             this.movieService.getMovies(param.priority).subscribe(
                 data => {
@@ -42,10 +42,21 @@ export class MovieListComponent implements OnInit {
     addChildOrder(filmToAddOrder: MovieFilm) {
         let index: number = this.movies.indexOf(filmToAddOrder);
         this.order.push(this.movies[index]);
+        this.sumTotalFee();
     }
 
     removeChildOrder (filmToRemoveOrder: MovieFilm) {
         let index: number = this.order.indexOf(filmToRemoveOrder);
         this.order.splice(index, 1);
+        this.sumTotalFee();
+    }
+    sumTotalFee() {
+        this.total = 0;
+        if (this.order.length > 0) {
+            this.order.forEach((element) => {
+                this.total = this.total + element.fee;
+            });
+        }
+        console.log(this.total);
     }
 }
