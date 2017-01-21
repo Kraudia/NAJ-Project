@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
     public categoriesAll: CategoriesAll = {};
     public total: number = 0;
     public newMovieFilmName: string;
+    public message: string = '';
 
     constructor(private movieService: MovieService,
         private activatedRoute: ActivatedRoute) {
@@ -40,16 +41,31 @@ export class MovieListComponent implements OnInit {
     }
 
     addChildOrder(filmToAddOrder: MovieFilm) {
-        let index: number = this.movies.indexOf(filmToAddOrder);
-        this.order.push(this.movies[index]);
-        this.sumTotalFee();
+        if (filmToAddOrder.copiesLeft > 0) {
+            let index: number = this.movies.indexOf(filmToAddOrder);
+            this.order.push(this.movies[index]);
+            this.sumTotalFee();
+            filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
+            this.message = "Movie is added to Your basket!";
+            if (filmToAddOrder.copiesLeft === 0) {
+                filmToAddOrder.isAvailable = false;
+            }
+        } else {
+            this.message = "Sorry, movie is not available now!";
+        }
     }
 
     removeChildOrder (filmToRemoveOrder: MovieFilm) {
+        if (filmToRemoveOrder.isAvailable === false) {
+            filmToRemoveOrder.isAvailable = true;
+        }
+        this.message = 'Movie is removed from your basket!';
         let index: number = this.order.indexOf(filmToRemoveOrder);
         this.order.splice(index, 1);
         this.sumTotalFee();
+        filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
     }
+
     sumTotalFee() {
         this.total = 0;
         if (this.order.length > 0) {

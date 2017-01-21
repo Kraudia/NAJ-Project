@@ -19,6 +19,7 @@ var MovieListComponent = (function () {
         this.order = [];
         this.categoriesAll = {};
         this.total = 0;
+        this.message = '';
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -34,14 +35,29 @@ var MovieListComponent = (function () {
         });
     };
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
-        var index = this.movies.indexOf(filmToAddOrder);
-        this.order.push(this.movies[index]);
-        this.sumTotalFee();
+        if (filmToAddOrder.copiesLeft > 0) {
+            var index = this.movies.indexOf(filmToAddOrder);
+            this.order.push(this.movies[index]);
+            this.sumTotalFee();
+            filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
+            this.message = "Movie is added to Your basket!";
+            if (filmToAddOrder.copiesLeft === 0) {
+                filmToAddOrder.isAvailable = false;
+            }
+        }
+        else {
+            this.message = "Sorry, movie is not available now!";
+        }
     };
     MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
+        if (filmToRemoveOrder.isAvailable === false) {
+            filmToRemoveOrder.isAvailable = true;
+        }
+        this.message = 'Movie is removed from your basket!';
         var index = this.order.indexOf(filmToRemoveOrder);
         this.order.splice(index, 1);
         this.sumTotalFee();
+        filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
     };
     MovieListComponent.prototype.sumTotalFee = function () {
         var _this = this;
