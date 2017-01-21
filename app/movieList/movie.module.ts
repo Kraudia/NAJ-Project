@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MovieListComponent } from './movieList.component';
 import { MovieComponent } from './movie.component';
-import { OrderComponent } from './order.component';
+import { OrderedMovieComponent } from './orderedMovie.component';
 import { MovieService } from './movieList.service';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -22,10 +22,11 @@ const routes: Routes = [
         FormsModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [ MovieListComponent, MovieComponent, OrderComponent ],
+    declarations: [ MovieListComponent, MovieComponent, OrderedMovieComponent ],
     exports: [ MovieListComponent ],
     providers: [ MovieService ]
 })
+
 export class MovieModule {
 
 }

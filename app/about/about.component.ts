@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AboutInfo, AboutHours } from './about.model';
+import { AboutInfo } from './about.model';
 import { AboutService } from './about.service';
 import { ActivatedRoute } from '@angular/router';
 

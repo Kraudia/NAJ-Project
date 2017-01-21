@@ -5,17 +5,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var forms_1 = require("@angular/forms");
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./header/header.component");
 var about_component_1 = require("./about/about.component");
+var order_component_1 = require("./order/order.component");
 var router_1 = require("@angular/router");
 var routes = [
     { path: '', redirectTo: 'about', pathMatch: 'full' },
     { path: 'list', loadChildren: 'app/movieList/movie.module#MovieModule' },
-    { path: 'about', component: about_component_1.AboutComponent }
+    { path: 'about', component: about_component_1.AboutComponent },
+    { path: 'order', component: order_component_1.OrderComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -26,10 +29,11 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
+            forms_1.FormsModule,
             http_1.HttpModule,
             router_1.RouterModule.forRoot(routes)
         ],
-        declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, about_component_1.AboutComponent],
+        declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, about_component_1.AboutComponent, order_component_1.OrderComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

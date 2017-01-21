@@ -9,28 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var OrderMovieComponent = (function () {
-    function OrderMovieComponent() {
-        this.removeMovieFilmOrder = new core_1.EventEmitter();
+var common_1 = require("@angular/common");
+var OrderComponent = (function () {
+    function OrderComponent(location) {
+        this.meassage2 = 'Hallo!';
+        this.model = {};
+        this.submitted = false;
+        this.location = location;
     }
-    OrderMovieComponent.prototype.removeFilmOrder = function () {
-        this.removeMovieFilmOrder.emit(this.todoTask);
+    OrderComponent.prototype.onSubmit = function () { this.submitted = true; };
+    OrderComponent.prototype.back = function () {
+        this.location.back();
     };
-    return OrderMovieComponent;
+    return OrderComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], OrderMovieComponent.prototype, "orderedMovieFilm", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], OrderMovieComponent.prototype, "removeMovieFilmOrder", void 0);
-OrderMovieComponent = __decorate([
+OrderComponent = __decorate([
     core_1.Component({
-        selector: 'myOrderedMovie',
-        templateUrl: 'app/movieList/order.component.html'
-    })
-], OrderMovieComponent);
-exports.OrderMovieComponent = OrderMovieComponent;
+        selector: 'myOrder',
+        templateUrl: 'app/order/order.component.html',
+        styleUrls: ['app/order/order.component.css']
+    }),
+    __metadata("design:paramtypes", [common_1.Location])
+], OrderComponent);
+exports.OrderComponent = OrderComponent;
 //# sourceMappingURL=order.component.js.map

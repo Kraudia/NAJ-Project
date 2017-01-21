@@ -9,28 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var OrderMovieComponent = (function () {
-    function OrderMovieComponent() {
+var OrderedMovieComponent = (function () {
+    function OrderedMovieComponent() {
         this.removeMovieFilmOrder = new core_1.EventEmitter();
     }
-    OrderMovieComponent.prototype.removeFilmOrder = function () {
-        this.removeMovieFilmOrder.emit(this.todoTask);
+    OrderedMovieComponent.prototype.removeFilmOrder = function () {
+        this.removeMovieFilmOrder.emit(this.orderedMovieFilm);
     };
-    return OrderMovieComponent;
+    return OrderedMovieComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
-], OrderMovieComponent.prototype, "orderedMovieFilm", void 0);
+], OrderedMovieComponent.prototype, "orderedMovieFilm", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], OrderMovieComponent.prototype, "removeMovieFilmOrder", void 0);
-OrderMovieComponent = __decorate([
+], OrderedMovieComponent.prototype, "removeMovieFilmOrder", void 0);
+OrderedMovieComponent = __decorate([
     core_1.Component({
         selector: 'myOrderedMovie',
-        templateUrl: 'app/movieList/order.component.html'
+        templateUrl: 'app/movieList/orderedMovie.component.html'
     })
-], OrderMovieComponent);
-exports.OrderMovieComponent = OrderMovieComponent;
-//# sourceMappingURL=order.component.js.map
+], OrderedMovieComponent);
+exports.OrderedMovieComponent = OrderedMovieComponent;
+//# sourceMappingURL=orderedMovie.component.js.map

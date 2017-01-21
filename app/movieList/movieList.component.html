@@ -20,7 +20,7 @@ Movies
 Basket
 <ul>
     <li *ngFor="let movieFilmInsideFor of order">
-        <myOrder [orderedMovieFilm]="movieFilmInsideFor"
-            (removeMovieFilmOrder)="removeChildOrder($event)"></myOrder>
+        <myOrderedMovie [orderedMovieFilm]="movieFilmInsideFor"
+            (removeMovieFilmOrder)="removeChildOrder($event)"></myOrderedMovie>
     </li>
 </ul>

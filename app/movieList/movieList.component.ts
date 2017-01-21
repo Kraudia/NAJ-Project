@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieFilm } from './movie.model';
-import { OrderedMovieFilm } from './order.model';
+import { OrderedMovieFilm } from './orderedMovie.model';
 import { MovieService } from './movieList.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesAll } from './categories.model';
