@@ -14,8 +14,4 @@ export class MovieComponent {
     addFilmOrder () {
         this.orderMovieFilm.emit(this.movieFilm);
     }
-
-    removeFilmOrder () {
-        this.removeMovieFilmOrder.emit(this.todoTask);
-    }
 }

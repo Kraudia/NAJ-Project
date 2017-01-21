@@ -16,9 +16,6 @@ var MovieComponent = (function () {
     MovieComponent.prototype.addFilmOrder = function () {
         this.orderMovieFilm.emit(this.movieFilm);
     };
-    MovieComponent.prototype.removeFilmOrder = function () {
-        this.removeMovieFilmOrder.emit(this.todoTask);
-    };
     return MovieComponent;
 }());
 __decorate([

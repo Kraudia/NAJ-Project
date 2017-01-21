@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var OrderComponent = (function () {
     function OrderComponent() {
-        this.orderMovieFilm = new core_1.EventEmitter();
+        this.removeMovieFilmOrder = new core_1.EventEmitter();
     }
     OrderComponent.prototype.removeFilmOrder = function () {
         this.removeMovieFilmOrder.emit(this.todoTask);
@@ -25,7 +25,7 @@ __decorate([
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], OrderComponent.prototype, "orderMovieFilm", void 0);
+], OrderComponent.prototype, "removeMovieFilmOrder", void 0);
 OrderComponent = __decorate([
     core_1.Component({
         selector: 'myOrder',

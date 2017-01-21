@@ -9,7 +9,7 @@ import { OrderedMovieFilm } from './order.model';
 export class OrderComponent {
     @Input() public orderedMovieFilm: OrderedMovieFilm;
 
-    @Output() orderMovieFilm : EventEmitter<OrderedMovieFilm> =
+    @Output() removeMovieFilmOrder : EventEmitter<OrderedMovieFilm> =
         new EventEmitter<OrderedMovieFilm>();
 
     removeFilmOrder () {
