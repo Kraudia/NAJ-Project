@@ -1,6 +1,7 @@
 export interface MovieFilm {
     name: string,
     categoryIds: Array<string>,
-    count: number,
+    isAvailable: boolean,
+    copiesLeft: number,
     fee: number
 }

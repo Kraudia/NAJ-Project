@@ -45,7 +45,8 @@ function mapMovies(movies) {
             name: movie.name,
             categoryIds: movie.categoryIds,
             isAvailable: movie.count > borrowedCount,
-            copiesLeft: movie.count - borrowedCount
+            copiesLeft: movie.count - borrowedCount,
+            fee: movie.fee
         };
     });
 }
