@@ -21,6 +21,14 @@ var OrderComponent = (function () {
     OrderComponent.prototype.back = function () {
         this.location.back();
     };
+    OrderComponent.prototype.go = function () {
+        if (this.model.phone.search(/[0-9]{9,10}/) != -1 && this.model.phone.length < 11) {
+            alert("Good number!");
+        }
+        else {
+            alert("Bad number!");
+        }
+    };
     return OrderComponent;
 }());
 OrderComponent = __decorate([
