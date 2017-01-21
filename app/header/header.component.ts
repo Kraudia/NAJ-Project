@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: [ 'app/header/header.component.css' ]
 })
 export class HeaderComponent {
-    public meassage:string = 'Hallo!';
+    public meassage:string = 'Hello!';
 }

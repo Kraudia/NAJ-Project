@@ -26,10 +26,14 @@ export class OrderComponent {
     	this.location.back();
   	}
   go() {
-      if (this.model.phone.search(/[0-9]{9,10}/) != -1 && this.model.phone.length < 11) {
-          alert("Good number!")
+      if (this.model.phone) {
+          if (this.model.phone.search(/[0-9]{9,10}/) != -1 && this.model.phone.length < 11) {
+              alert("Good number!")
+          } else {
+              alert("Bad number!")
+          }
       } else {
-          alert("Bad number!")
+          alert("Please enter phone number!");
       }
   }
 }
