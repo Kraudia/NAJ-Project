@@ -12,7 +12,7 @@ import { CategoriesAll } from './categories.model';
 })
 export class MovieListComponent implements OnInit {
 
-    public movies: Array<MovieFilm>;
+    public movies: Array<MovieFilm> = [];
     public categoriesAll: CategoriesAll = {};
     public newMovieFilmName: string;
     public message: string = '';
@@ -42,8 +42,6 @@ export class MovieListComponent implements OnInit {
                 }
             );
         });
-
-        
     }
 
     updateCopies() {
@@ -67,10 +65,10 @@ export class MovieListComponent implements OnInit {
     addChildOrder(filmToAddOrder: MovieFilm) {
         if (filmToAddOrder.copiesLeft > 0) {
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
-            this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
                 filmToAddOrder.isAvailable = false;
             }
+            this.message = "Movie " + filmToAddOrder.name + " is added to Your basket!";
             this.orderService.addToOrderedMovies(filmToAddOrder);
         } else {
             this.message = "Sorry, movie is not available now!";
@@ -83,15 +81,15 @@ export class MovieListComponent implements OnInit {
                 return movie.name === filmToRemoveOrder.name;
             });
 
-            oneMovie = oneMovie[0];
+        oneMovie = oneMovie[0];
 
-            let index: number = this.movies.indexOf(oneMovie);
-            this.movies[index].copiesLeft += 1;
-            if (this.movies[index].isAvailable === false) {
-                this.movies[index].isAvailable = true;
-            }
+        let index: number = this.movies.indexOf(oneMovie);
+        this.movies[index].copiesLeft += 1;
+        if (this.movies[index].isAvailable === false) {
+            this.movies[index].isAvailable = true;
+        }
         
-
+        this.message = 'Movie ' + this.movies[index].name + ' is removed from your basket!';
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     }

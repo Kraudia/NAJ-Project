@@ -17,6 +17,7 @@ var MovieListComponent = (function () {
         this.movieService = movieService;
         this.activatedRoute = activatedRoute;
         this.orderService = orderService;
+        this.movies = [];
         this.categoriesAll = {};
         this.message = '';
     }
@@ -54,10 +55,10 @@ var MovieListComponent = (function () {
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         if (filmToAddOrder.copiesLeft > 0) {
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
-            this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
                 filmToAddOrder.isAvailable = false;
             }
+            this.message = "Movie " + filmToAddOrder.name + " is added to Your basket!";
             this.orderService.addToOrderedMovies(filmToAddOrder);
         }
         else {
@@ -75,6 +76,7 @@ var MovieListComponent = (function () {
         if (this.movies[index].isAvailable === false) {
             this.movies[index].isAvailable = true;
         }
+        this.message = 'Movie ' + this.movies[index].name + ' is removed from your basket!';
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     };
