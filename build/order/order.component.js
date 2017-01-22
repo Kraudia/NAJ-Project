@@ -54,13 +54,13 @@ var OrderComponent = (function () {
         this.orderForm = this.fb.group({
             'name': [this.order.name, [
                     forms_1.Validators.required,
-                    forms_1.Validators.minLength(4),
+                    forms_1.Validators.minLength(3),
                     forms_1.Validators.maxLength(24)
                 ]
             ],
             'surname': [this.order.surname, [
                     forms_1.Validators.required,
-                    forms_1.Validators.minLength(4),
+                    forms_1.Validators.minLength(3),
                     forms_1.Validators.maxLength(24)
                 ]],
             'phone': [this.order.phone, [

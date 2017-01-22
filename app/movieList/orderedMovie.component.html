@@ -1,3 +1,15 @@
-<span>Order: {{orderedMovieFilm.name}}</span>
-<span>fee: {{orderedMovieFilm.fee}}</span>
-<button (click)="removeFilmOrder()">Remove</button>
+<div class="media">
+  <div class="media-left media-middle text-center" >
+    ${{orderedMovieFilm.fee}}
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{orderedMovieFilm.name}}</h4>
+    <p class="text-capitalize">{{orderedMovieFilm.categoryIds}}</p>
+  </div>
+  <div class="media-right media-middle" >
+    <button class="btn btn-primary" (click)="removeFilmOrder()">
+    	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    	Remove
+    </button>
+  </div>
+</div>

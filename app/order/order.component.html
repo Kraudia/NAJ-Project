@@ -1,44 +1,74 @@
 <div class="container">
-  <div [hidden]="submitted">
-    <h1>Ordering Movies</h1>
-    <form [formGroup]="orderForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Name</label>
 
-        <input type="text" id="name" class="form-control"
-               formControlName="name" required >
+  <div class="row">
 
-        <div *ngIf="formErrors.name" class="alert alert-danger">
-          {{ formErrors.name }}
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div [hidden]="submitted">
+            <form class="form-horizontal" [formGroup]="orderForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+              <fieldset>
+                <legend>Order</legend>      
+                
+                <div class="form-group">
+                  <label for="name" class="col-lg-2 control-label">Name</label>
+                  <div class="col-lg-10">
+                    <input type="text" id="name" class="form-control"
+                         formControlName="name" required placeholder="Name">
+                    <div *ngIf="formErrors.name" class="alert alert-danger">
+                      {{ formErrors.name }}
+                    </div>
+                  </div>          
+                </div>
+                
+                <div class="form-group">
+                  <label for="surname" class="col-lg-2 control-label">Surname</label>
+                  <div class="col-lg-10">
+                    <input type="text" id="surname" class="form-control"
+                      formControlName="surname" required>
+                    <div *ngIf="formErrors.surname" class="alert alert-danger">
+                      {{ formErrors.surname }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="col-lg-2 control-label">Phone</label>
+                  <div class="col-lg-10">
+                    <input type="text" id="phone" class="form-control"
+                      formControlName="phone" required>
+                    <div *ngIf="formErrors.phone" class="alert alert-danger">
+                      {{ formErrors.phone }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-default" (click)="back()">Back</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary"  [disabled]="!orderForm.valid">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <order-submitted [order]="order" [(submitted)]="submitted"></order-submitted>
         </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input type="text" id="surname" class="form-control"
-            formControlName="surname" required>
-
-        <div *ngIf="formErrors.surname" class="alert alert-danger">
-          {{ formErrors.surname }}
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Ordered books</h3>
+        </div>
+        <div class="panel-body">
+          TODO: Zawartosc koszyka
         </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" class="form-control"
-               formControlName="phone" required>
-
-        <div *ngIf="formErrors.phone" class="alert alert-danger">
-          {{ formErrors.phone }}
-        </div>
-      </div>
-	
-	  <button type="submit" class="btn btn-default"
-             [disabled]="!orderForm.valid">Submit</button>
-    </form>
   </div>
 
-  <order-submitted [order]="order" [(submitted)]="submitted"></order-submitted>
 </div>
-
-<button type="submit" class="btn btn-default" (click)="back()">Back</button>

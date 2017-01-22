@@ -1,14 +1,16 @@
-<div>
-   <h2>{{ aboutInfo.name }}</h2>
-   <h3>Open:</h3>
-
-   <ul>
-      <li>Monday: {{aboutHours.monday}}</li>
-      <li>Tuesday: {{aboutHours.tuesday}}</li>
-      <li>Wednesday: {{aboutHours.wednesday}}</li>
-      <li>Thursday: {{aboutHours.thursday}}</li>
-      <li>Friday: {{aboutHours.friday}}</li>
-      <li>Saturday: {{aboutHours.saturday}}</li>
-      <li>Sunday: {{aboutHours.sunday}}</li>
-   </ul>
+<div class="container">
+   <div class="panel panel-primary">
+      <div class="panel-heading">
+         <h3 class="panel-title">{{ aboutInfo.name }}</h3>
+      </div>
+     <ul class="list-group">
+         <li class="list-group-item">Monday: {{aboutHours.monday}}</li>
+         <li class="list-group-item">Tuesday: {{aboutHours.tuesday}}</li>
+         <li class="list-group-item">Wednesday: {{aboutHours.wednesday}}</li>
+         <li class="list-group-item">Thursday: {{aboutHours.thursday}}</li>
+         <li class="list-group-item">Friday: {{aboutHours.friday}}</li>
+         <li class="list-group-item">Saturday: {{aboutHours.saturday}}</li>
+         <li class="list-group-item">Sunday: {{aboutHours.sunday}}</li>
+      </ul>
+   </div>
 </div>

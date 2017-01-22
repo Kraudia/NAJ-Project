@@ -37,13 +37,13 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       'name': [this.order.name, [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(3),
           Validators.maxLength(24)
         ]
       ],
       'surname': [this.order.surname, [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(3),
           Validators.maxLength(24)
         ]],
       'phone':    [this.order.phone, [

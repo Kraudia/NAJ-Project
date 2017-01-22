@@ -1,6 +1,22 @@
-<span>Name: {{movieFilm.name}}</span>
-<span>categoryIds: {{movieFilm.categoryIds}}</span>
-<span>isAvaiable: {{movieFilm.isAvailable}}</span>
-<span>copiesLeft: {{movieFilm.copiesLeft}}</span>
-<span>fee: {{movieFilm.fee}}</span>
-<button (click)="addFilmOrder()">Add</button>
+<div class="media">
+  <div class="media-left media-middle text-center" >
+    <h3><span class="glyphicon glyphicon-film" aria-hidden="true"></span></h3>
+    ${{movieFilm.fee}}
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{movieFilm.name}}</h4>
+    <p class="text-capitalize">{{movieFilm.categoryIds}}</p>
+    Copies left: {{movieFilm.copiesLeft}}
+    <br>Availability: {{movieFilm.isAvailable}}
+  </div>
+  <div class="media-right media-middle" >
+    <button *ngIf="movieFilm.isAvailable" class="btn btn-success" (click)="addFilmOrder()">
+    	<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    	Add
+    </button>
+    <button *ngIf="!movieFilm.isAvailable" class="btn btn-primary" disabled="disabled" (click)="addFilmOrder()">
+		<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    	Add
+    </button>
+  </div>
+</div>

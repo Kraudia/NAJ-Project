@@ -33,7 +33,6 @@ AboutComponent = __decorate([
     core_1.Component({
         selector: 'myAbout',
         templateUrl: 'app/about/about.component.html',
-        styleUrls: ['app/about/about.component.css'],
         providers: [about_service_1.AboutService]
     }),
     __metadata("design:paramtypes", [about_service_1.AboutService,

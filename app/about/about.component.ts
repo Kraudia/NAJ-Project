@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'myAbout',
     templateUrl: 'app/about/about.component.html',
-    styleUrls: [ 'app/about/about.component.css' ],
     providers: [ AboutService ]
 })
 
