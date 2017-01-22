@@ -73,6 +73,5 @@ export class MovieListComponent implements OnInit {
                 this.total = this.total + element.fee;
             });
         }
-        console.log(this.total);
     }
 }

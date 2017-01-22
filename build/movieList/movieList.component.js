@@ -67,7 +67,6 @@ var MovieListComponent = (function () {
                 _this.total = _this.total + element.fee;
             });
         }
-        console.log(this.total);
     };
     return MovieListComponent;
 }());

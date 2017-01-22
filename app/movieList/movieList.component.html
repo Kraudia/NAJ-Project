@@ -1,69 +1,85 @@
  <div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Movies</h3>
-        </div>
-        <div class="panel-body">
-            <ul class="breadcrumb  text-center">
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/#" routerLinkActive="active">All</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/adventure" >{{categoriesAll.adventure}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/fantasy" routerLinkActive="active">{{categoriesAll.fantasy}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/sciFi" routerLinkActive="active">{{categoriesAll.sciFi}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/comedy" routerLinkActive="active">{{categoriesAll.comedy}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/drama" routerLinkActive="active">{{categoriesAll.drama}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/family" routerLinkActive="active">{{categoriesAll.family}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/crime" routerLinkActive="active">{{categoriesAll.crime}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/action" routerLinkActive="active">{{categoriesAll.action}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a href routerLink="/list/romance" routerLinkActive="active">{{categoriesAll.romance}}</a>
-              </li>
-            </ul>
 
-            <div  class="list-group">
-                <button type="button" *ngFor="let movieFilmInsideFor of movies" class="list-group-item">
-                    <myMovie [movieFilm]="movieFilmInsideFor"
-                            (orderMovieFilm)="addChildOrder($event)"></myMovie>
-                </button>
-            </div >
-        </div>
-    </div>     
+  <div class="row">
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Basket</h3>
-        </div>
-        <div class="panel-body">
-            <p class="text-center">
-              {{message}}
-            </p>
-            <div  class="list-group">
-                <button type="button" *ngFor="let movieFilmInsideFor of order" class="list-group-item">
-                    <myOrderedMovie [orderedMovieFilm]="movieFilmInsideFor"
-                (removeMovieFilmOrder)="removeChildOrder($event)"></myOrderedMovie>
-                </button>
-            </div >
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Movies</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="breadcrumb  text-center">
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/#" routerLinkActive="active">All</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/adventure" >{{categoriesAll.adventure}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/fantasy" routerLinkActive="active">{{categoriesAll.fantasy}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/sciFi" routerLinkActive="active">{{categoriesAll.sciFi}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/comedy" routerLinkActive="active">{{categoriesAll.comedy}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/drama" routerLinkActive="active">{{categoriesAll.drama}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/family" routerLinkActive="active">{{categoriesAll.family}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/crime" routerLinkActive="active">{{categoriesAll.crime}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/action" routerLinkActive="active">{{categoriesAll.action}}</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a href routerLink="/list/romance" routerLinkActive="active">{{categoriesAll.romance}}</a>
+                  </li>
+                </ul>
 
-            <p class="text-center">
-              Total cost: {{total | currency:'USD':true:'1.2-2' }}
-            </p>
-        </div>
-    </div>     
+                <div  class="list-group">
+                    <button type="button" *ngFor="let movieFilmInsideFor of movies" class="list-group-item">
+                        <myMovie [movieFilm]="movieFilmInsideFor"
+                                (orderMovieFilm)="addChildOrder($event)"></myMovie>
+                    </button>
+                </div >
+            </div>
+        </div>     
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Basket</h3>
+            </div>
+            <div class="panel-body">
+                <div *ngIf="message" class="alert alert-dismissible alert-info">
+                  <strong>Info!</strong>  {{message}}
+                </div>
+                <div  class="list-group">
+                    <button type="button" *ngFor="let movieFilmInsideFor of order" class="list-group-item">
+                        <myOrderedMovie [orderedMovieFilm]="movieFilmInsideFor"
+                    (removeMovieFilmOrder)="removeChildOrder($event)"></myOrderedMovie>
+                    </button>
+                </div >
+
+                <p class="text-center">
+                  Total cost: {{total | currency:'USD':true:'1.2-2' }}
+                </p>
+                <p class="text-center">
+                  <button [disabled]="!total>0" class="btn btn-default" routerLink="/order">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    Order
+                  </button>
+                </p>
+            </div>
+        </div>  
+      </div>
+
+  </div> 
+
 </div>
