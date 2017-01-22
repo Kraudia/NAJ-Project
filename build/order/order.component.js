@@ -9,30 +9,89 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var common_1 = require("@angular/common");
 var OrderComponent = (function () {
-    function OrderComponent(location) {
-        this.meassage2 = 'Hallo!';
-        this.model = {};
+    function OrderComponent(location, fb) {
+        this.fb = fb;
+        this.order = {};
         this.submitted = false;
+        this.active = true;
+        this.formErrors = {
+            'name': '',
+            'surname': '',
+            'phone': ''
+        };
+        this.validationMessages = {
+            'name': {
+                'required': 'Name is required.',
+                'minlength': 'Name must be at least 4 characters long.',
+                'maxlength': 'Name cannot be more than 24 characters long.'
+            },
+            'surname': {
+                'required': 'Surname is required.',
+                'minlength': 'Surname must be at least 4 characters long.',
+                'maxlength': 'Surname cannot be more than 24 characters long.'
+            },
+            'phone': {
+                'required': 'Phone is required.',
+                'minlength': 'Phone must be at least 9 characters long.',
+                'maxlength': 'Phone cannot be more than 10 characters long.',
+                'pattern': 'Phone number is wrong.'
+            }
+        };
         this.location = location;
     }
-    OrderComponent.prototype.onSubmit = function () { this.submitted = true; };
+    OrderComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        this.order = this.orderForm.value;
+    };
+    OrderComponent.prototype.ngOnInit = function () {
+        this.buildForm();
+    };
+    OrderComponent.prototype.buildForm = function () {
+        var _this = this;
+        this.orderForm = this.fb.group({
+            'name': [this.order.name, [
+                    forms_1.Validators.required,
+                    forms_1.Validators.minLength(4),
+                    forms_1.Validators.maxLength(24)
+                ]
+            ],
+            'surname': [this.order.surname, [
+                    forms_1.Validators.required,
+                    forms_1.Validators.minLength(4),
+                    forms_1.Validators.maxLength(24)
+                ]],
+            'phone': [this.order.phone, [
+                    forms_1.Validators.required,
+                    forms_1.Validators.minLength(9),
+                    forms_1.Validators.maxLength(10),
+                    forms_1.Validators.pattern("[0-9]{9,10}")
+                ]]
+        });
+        this.orderForm.valueChanges
+            .subscribe(function (data) { return _this.onValueChanged(data); });
+        this.onValueChanged();
+    };
+    OrderComponent.prototype.onValueChanged = function (data) {
+        if (!this.orderForm) {
+            return;
+        }
+        var form = this.orderForm;
+        for (var field in this.formErrors) {
+            this.formErrors[field] = '';
+            var control = form.get(field);
+            if (control && control.dirty && !control.valid) {
+                var messages = this.validationMessages[field];
+                for (var key in control.errors) {
+                    this.formErrors[field] += messages[key] + ' ';
+                }
+            }
+        }
+    };
     OrderComponent.prototype.back = function () {
         this.location.back();
-    };
-    OrderComponent.prototype.go = function () {
-        if (this.model.phone) {
-            if (this.model.phone.search(/[0-9]{9,10}/) != -1 && this.model.phone.length < 11) {
-                alert("Good number!");
-            }
-            else {
-                alert("Bad number!");
-            }
-        }
-        else {
-            alert("Please enter phone number!");
-        }
     };
     return OrderComponent;
 }());
@@ -42,7 +101,7 @@ OrderComponent = __decorate([
         templateUrl: 'app/order/order.component.html',
         styleUrls: ['app/order/order.component.css']
     }),
-    __metadata("design:paramtypes", [common_1.Location])
+    __metadata("design:paramtypes", [common_1.Location, forms_1.FormBuilder])
 ], OrderComponent);
 exports.OrderComponent = OrderComponent;
 //# sourceMappingURL=order.component.js.map

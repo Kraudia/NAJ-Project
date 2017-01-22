@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+
+import { Order } from './order.model';
 
 @Component({
     selector: 'myOrder',
@@ -7,33 +10,100 @@ import { Location } from '@angular/common';
     styleUrls: [ 'app/order/order.component.css' ]
 })
 
-export class OrderComponent {
+export class OrderComponent implements OnInit {
 
 	location: Location;
 
-	constructor(location: Location) {
-		this.location = location;
-	}
-
-    public meassage2:string = 'Hallo!';
-
-    model = {};
+  public order: Order = {};
 
 	submitted = false;
-	onSubmit() { this.submitted = true; }
+
+	onSubmit() { 
+    this.submitted = true; 
+    this.order = this.orderForm.value;
+  }
+  active = true;
+
+  orderForm: FormGroup;
+  constructor(location: Location, private fb: FormBuilder) {
+    this.location = location;
+  }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.orderForm = this.fb.group({
+      'name': [this.order.name, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(24)
+        ]
+      ],
+      'surname': [this.order.surname, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(24)
+        ]],
+      'phone':    [this.order.phone, [
+          Validators.required,
+          Validators.minLength(9),
+          Validators.maxLength(10),
+          Validators.pattern("[0-9]{9,10}")
+        ]]
+    });
+
+    this.orderForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged();
+  }
+
+
+  onValueChanged(data?: any) {
+    if (!this.orderForm) { return; }
+    const form = this.orderForm;
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  formErrors = {
+    'name': '',
+    'surname': '',
+    'phone': ''
+  };
+
+  validationMessages = {
+    'name': {
+      'required':      'Name is required.',
+      'minlength':     'Name must be at least 4 characters long.',
+      'maxlength':     'Name cannot be more than 24 characters long.'
+    },
+    'surname': {
+      'required':      'Surname is required.',
+      'minlength':     'Surname must be at least 4 characters long.',
+      'maxlength':     'Surname cannot be more than 24 characters long.'
+    },
+    'phone': {
+      'required':     'Phone is required.',
+      'minlength':    'Phone must be at least 9 characters long.',
+      'maxlength':    'Phone cannot be more than 10 characters long.',
+      'pattern':      'Phone number is wrong.'
+    }
+  };
 
 	back() {
     	this.location.back();
   	}
-  go() {
-      if (this.model.phone) {
-          if (this.model.phone.search(/[0-9]{9,10}/) != -1 && this.model.phone.length < 11) {
-              alert("Good number!")
-          } else {
-              alert("Bad number!")
-          }
-      } else {
-          alert("Please enter phone number!");
-      }
-  }
 }
