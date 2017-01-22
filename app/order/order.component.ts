@@ -41,14 +41,16 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       'name': [this.order.name, [
           Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(24)
+          Validators.minLength(1),
+          Validators.maxLength(24),
+          Validators.pattern("\\w+")
         ]
       ],
       'surname': [this.order.surname, [
           Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(24)
+          Validators.minLength(1),
+          Validators.maxLength(24),
+          Validators.pattern("\\w+")
         ]],
       'phone':    [this.order.phone, [
           Validators.required,
@@ -92,12 +94,14 @@ export class OrderComponent implements OnInit {
     'name': {
       'required':      'Name is required.',
       'minlength':     'Name must be at least 4 characters long.',
-      'maxlength':     'Name cannot be more than 24 characters long.'
+      'maxlength':     'Name cannot be more than 24 characters long.',
+      'pattern':       'Name is wrong. Only letters allowed.'
     },
     'surname': {
       'required':      'Surname is required.',
       'minlength':     'Surname must be at least 4 characters long.',
-      'maxlength':     'Surname cannot be more than 24 characters long.'
+      'maxlength':     'Surname cannot be more than 24 characters long.',
+      'pattern':       'Surname is wrong. Only letters allowed.'
     },
     'phone': {
       'required':     'Phone is required.',

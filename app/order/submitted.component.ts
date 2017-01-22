@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { Borrow } from './borrow.model';
+import { OrderService } from './order.service';
+import { BorrowService } from './borrow.service';
 import { Order } from './order.model';
 
 @Component({
@@ -21,6 +23,7 @@ import { Order } from './order.model';
     </div>
     <br>
     <button class="btn btn-default" (click)="onClick()">Edit</button>
+    <button class="btn btn-default" (click)="onClickConfirm()">Confirm</button>
   </div>`
 })
 
@@ -28,5 +31,34 @@ export class SubmittedComponent {
   @Input()  order: Order;
   @Input()  submitted = false;
   @Output() submittedChange = new EventEmitter<boolean>();
-  onClick() { this.submittedChange.emit(false); }
+
+  constructor(private borrowService: BorrowService,
+    private orderService : OrderService) {
+  }
+
+  onClick() {
+    this.submittedChange.emit(false);
+  }
+
+  onClickConfirm() { 
+
+    let orderedMoviesIds: Array<number> = [];
+
+    this.orderService.order.forEach((element) => {
+      orderedMoviesIds.push(element.id);
+    });
+
+    var borrow: Borrow = {
+      form: {
+        firstName: this.order.name,
+        lastName: this.order.surname,
+        phone:  this.order.phone
+      },
+      movieIds: orderedMoviesIds
+    }
+    console.log(borrow);
+    console.log(JSON.stringify(borrow));
+    this.borrowService.borrowMovies(borrow).subscribe(
+      data => console.log(data));
+  }
 }

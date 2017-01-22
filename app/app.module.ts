@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+import { BorrowService } from './order/borrow.service';
 import { MovieListComponent } from './movieList/movieList.component';
 import { OrderFormComponent } from './order/OrderForm.component';
 import { OrderModule } from './order/order.module';
@@ -28,6 +29,6 @@ const routes: Routes = [
     ],
     declarations: [ AppComponent, HeaderComponent, AboutComponent, OrderFormComponent ],
     bootstrap: [ AppComponent ],
-    providers: [ OrderService ]
+    providers: [ OrderService, BorrowService ]
 })
 export class AppModule { }

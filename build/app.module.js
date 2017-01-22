@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./header/header.component");
 var about_component_1 = require("./about/about.component");
+var borrow_service_1 = require("./order/borrow.service");
 var OrderForm_component_1 = require("./order/OrderForm.component");
 var order_module_1 = require("./order/order.module");
 var order_service_1 = require("./order/order.service");
@@ -38,7 +39,7 @@ AppModule = __decorate([
         ],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, about_component_1.AboutComponent, OrderForm_component_1.OrderFormComponent],
         bootstrap: [app_component_1.AppComponent],
-        providers: [order_service_1.OrderService]
+        providers: [order_service_1.OrderService, borrow_service_1.BorrowService]
     })
 ], AppModule);
 exports.AppModule = AppModule;

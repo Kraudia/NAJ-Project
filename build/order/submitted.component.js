@@ -9,13 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var order_service_1 = require("./order.service");
+var borrow_service_1 = require("./borrow.service");
 var order_model_1 = require("./order.model");
 var SubmittedComponent = (function () {
-    function SubmittedComponent() {
+    function SubmittedComponent(borrowService, orderService) {
+        this.borrowService = borrowService;
+        this.orderService = orderService;
         this.submitted = false;
         this.submittedChange = new core_1.EventEmitter();
     }
-    SubmittedComponent.prototype.onClick = function () { this.submittedChange.emit(false); };
+    SubmittedComponent.prototype.onClick = function () {
+        this.submittedChange.emit(false);
+    };
+    SubmittedComponent.prototype.onClickConfirm = function () {
+        var orderedMoviesIds = [];
+        this.orderService.order.forEach(function (element) {
+            orderedMoviesIds.push(element.id);
+        });
+        var borrow = {
+            form: {
+                firstName: this.order.name,
+                lastName: this.order.surname,
+                phone: this.order.phone
+            },
+            movieIds: orderedMoviesIds
+        };
+        console.log(borrow);
+        console.log(JSON.stringify(borrow));
+        this.borrowService.borrowMovies(borrow).subscribe(function (data) { return console.log(data); });
+    };
     return SubmittedComponent;
 }());
 __decorate([
@@ -33,8 +56,10 @@ __decorate([
 SubmittedComponent = __decorate([
     core_1.Component({
         selector: 'order-submitted',
-        template: "\n  <div *ngIf=\"submitted\">\n    <h2>You submitted the following:</h2>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Name</div>\n      <div class=\"col-xs-9  pull-left\">{{ order.name }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Surname</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.surname }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Phone</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.phone }}</div>\n    </div>\n    <br>\n    <button class=\"btn btn-default\" (click)=\"onClick()\">Edit</button>\n  </div>"
-    })
+        template: "\n  <div *ngIf=\"submitted\">\n    <h2>You submitted the following:</h2>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Name</div>\n      <div class=\"col-xs-9  pull-left\">{{ order.name }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Surname</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.surname }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Phone</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.phone }}</div>\n    </div>\n    <br>\n    <button class=\"btn btn-default\" (click)=\"onClick()\">Edit</button>\n    <button class=\"btn btn-default\" (click)=\"onClickConfirm()\">Confirm</button>\n  </div>"
+    }),
+    __metadata("design:paramtypes", [borrow_service_1.BorrowService,
+        order_service_1.OrderService])
 ], SubmittedComponent);
 exports.SubmittedComponent = SubmittedComponent;
 //# sourceMappingURL=submitted.component.js.map

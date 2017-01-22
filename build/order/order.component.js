@@ -29,12 +29,14 @@ var OrderComponent = (function () {
             'name': {
                 'required': 'Name is required.',
                 'minlength': 'Name must be at least 4 characters long.',
-                'maxlength': 'Name cannot be more than 24 characters long.'
+                'maxlength': 'Name cannot be more than 24 characters long.',
+                'pattern': 'Name is wrong. Only letters allowed.'
             },
             'surname': {
                 'required': 'Surname is required.',
                 'minlength': 'Surname must be at least 4 characters long.',
-                'maxlength': 'Surname cannot be more than 24 characters long.'
+                'maxlength': 'Surname cannot be more than 24 characters long.',
+                'pattern': 'Surname is wrong. Only letters allowed.'
             },
             'phone': {
                 'required': 'Phone is required.',
@@ -58,14 +60,16 @@ var OrderComponent = (function () {
         this.orderForm = this.fb.group({
             'name': [this.order.name, [
                     forms_1.Validators.required,
-                    forms_1.Validators.minLength(3),
-                    forms_1.Validators.maxLength(24)
+                    forms_1.Validators.minLength(1),
+                    forms_1.Validators.maxLength(24),
+                    forms_1.Validators.pattern("\\w+")
                 ]
             ],
             'surname': [this.order.surname, [
                     forms_1.Validators.required,
-                    forms_1.Validators.minLength(3),
-                    forms_1.Validators.maxLength(24)
+                    forms_1.Validators.minLength(1),
+                    forms_1.Validators.maxLength(24),
+                    forms_1.Validators.pattern("\\w+")
                 ]],
             'phone': [this.order.phone, [
                     forms_1.Validators.required,
