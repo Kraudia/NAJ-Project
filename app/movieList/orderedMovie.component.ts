@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { OrderedMovieFilm } from './orderedMovie.model';
+import { MovieFilm } from './movie.model';
 
 @Component({
     selector: 'myOrderedMovie',
@@ -7,10 +7,10 @@ import { OrderedMovieFilm } from './orderedMovie.model';
 })
 
 export class OrderedMovieComponent {
-    @Input() public orderedMovieFilm: OrderedMovieFilm;
+    @Input() public orderedMovieFilm: MovieFilm;
 
-    @Output() removeMovieFilmOrder : EventEmitter<OrderedMovieFilm> =
-        new EventEmitter<OrderedMovieFilm>();
+    @Output() removeMovieFilmOrder : EventEmitter<MovieFilm> =
+        new EventEmitter<MovieFilm>();
 
     removeFilmOrder () {
         this.removeMovieFilmOrder.emit(this.orderedMovieFilm);

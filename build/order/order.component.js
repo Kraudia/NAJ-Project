@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var common_1 = require("@angular/common");
+var order_service_1 = require("./order.service");
 var OrderComponent = (function () {
-    function OrderComponent(location, fb) {
+    function OrderComponent(location, fb, orderService) {
         this.fb = fb;
-        this.order = {};
+        this.orderService = orderService;
+        this.order = [];
         this.submitted = false;
         this.active = true;
         this.formErrors = {
@@ -41,6 +43,7 @@ var OrderComponent = (function () {
             }
         };
         this.location = location;
+        this.order = this.orderService.order;
     }
     OrderComponent.prototype.onSubmit = function () {
         this.submitted = true;
@@ -101,7 +104,7 @@ OrderComponent = __decorate([
         templateUrl: 'app/order/order.component.html',
         styleUrls: ['app/order/order.component.css']
     }),
-    __metadata("design:paramtypes", [common_1.Location, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [common_1.Location, forms_1.FormBuilder, order_service_1.OrderService])
 ], OrderComponent);
 exports.OrderComponent = OrderComponent;
 //# sourceMappingURL=order.component.js.map

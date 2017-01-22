@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { MovieListComponent } from './movieList/movieList.component';
 import { OrderFormComponent } from './order/OrderForm.component';
 import { OrderModule } from './order/order.module';
+import { OrderService } from './order/order.service';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes)
     ],
     declarations: [ AppComponent, HeaderComponent, AboutComponent, OrderFormComponent ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ AppComponent ],
+    providers: [ OrderService ]
 })
 export class AppModule { }

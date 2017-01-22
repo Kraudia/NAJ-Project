@@ -10,16 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var movieList_service_1 = require("./movieList.service");
+var order_service_1 = require("./../order/order.service");
 var router_1 = require("@angular/router");
 var MovieListComponent = (function () {
-    function MovieListComponent(movieService, activatedRoute) {
+    function MovieListComponent(movieService, activatedRoute, orderService) {
         this.movieService = movieService;
         this.activatedRoute = activatedRoute;
-        this.movies = [];
-        this.order = [];
+        this.orderService = orderService;
         this.categoriesAll = {};
         this.total = 0;
         this.message = '';
+        this.order = this.orderService.order;
+        this.sumTotalFee();
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -37,13 +39,14 @@ var MovieListComponent = (function () {
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         if (filmToAddOrder.copiesLeft > 0) {
             var index = this.movies.indexOf(filmToAddOrder);
-            this.order.push(this.movies[index]);
+            // this.order.push(this.movies[index]);
             this.sumTotalFee();
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
             this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
                 filmToAddOrder.isAvailable = false;
             }
+            this.orderService.addToOrderedMovies(filmToAddOrder);
         }
         else {
             this.message = "Sorry, movie is not available now!";
@@ -55,9 +58,10 @@ var MovieListComponent = (function () {
         }
         this.message = 'Movie is removed from your basket!';
         var index = this.order.indexOf(filmToRemoveOrder);
-        this.order.splice(index, 1);
+        //this.order.splice(index, 1);
         this.sumTotalFee();
         filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
+        this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
     };
     MovieListComponent.prototype.sumTotalFee = function () {
         var _this = this;
@@ -76,7 +80,8 @@ MovieListComponent = __decorate([
         templateUrl: 'app/movieList/movieList.component.html'
     }),
     __metadata("design:paramtypes", [movieList_service_1.MovieService,
-        router_1.ActivatedRoute])
+        router_1.ActivatedRoute,
+        order_service_1.OrderService])
 ], MovieListComponent);
 exports.MovieListComponent = MovieListComponent;
 //# sourceMappingURL=movieList.component.js.map

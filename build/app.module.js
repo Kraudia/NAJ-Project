@@ -14,6 +14,7 @@ var header_component_1 = require("./header/header.component");
 var about_component_1 = require("./about/about.component");
 var OrderForm_component_1 = require("./order/OrderForm.component");
 var order_module_1 = require("./order/order.module");
+var order_service_1 = require("./order/order.service");
 var router_1 = require("@angular/router");
 var routes = [
     { path: '', redirectTo: 'list', pathMatch: 'full' },
@@ -36,7 +37,8 @@ AppModule = __decorate([
             router_1.RouterModule.forRoot(routes)
         ],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, about_component_1.AboutComponent, OrderForm_component_1.OrderFormComponent],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent],
+        providers: [order_service_1.OrderService]
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
+import { OrderService } from './order.service';
 import { Order } from './order.model';
+import { MovieFilm } from './../movieList/movie.model';
 
 @Component({
     selector: 'myOrder',
@@ -14,7 +16,7 @@ export class OrderComponent implements OnInit {
 
 	location: Location;
 
-  public order: Order = {};
+  public order: Array<MovieFilm> = [];
 
 	submitted = false;
 
@@ -25,8 +27,10 @@ export class OrderComponent implements OnInit {
   active = true;
 
   orderForm: FormGroup;
-  constructor(location: Location, private fb: FormBuilder) {
+
+  constructor(location: Location, private fb: FormBuilder, private orderService: OrderService) {
     this.location = location;
+    this.order = this.orderService.order;
   }
 
   ngOnInit(): void {

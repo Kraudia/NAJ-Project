@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var order_service_1 = require("./../order/order.service");
 var MovieComponent = (function () {
-    function MovieComponent() {
+    function MovieComponent(orderService) {
+        this.orderService = orderService;
         this.orderMovieFilm = new core_1.EventEmitter();
     }
     MovieComponent.prototype.addFilmOrder = function () {
@@ -30,7 +32,8 @@ MovieComponent = __decorate([
     core_1.Component({
         selector: 'myMovie',
         templateUrl: 'app/movieList/movie.component.html'
-    })
+    }),
+    __metadata("design:paramtypes", [order_service_1.OrderService])
 ], MovieComponent);
 exports.MovieComponent = MovieComponent;
 //# sourceMappingURL=movie.component.js.map
