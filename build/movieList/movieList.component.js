@@ -19,10 +19,10 @@ var MovieListComponent = (function () {
         this.orderService = orderService;
         this.categoriesAll = {};
         this.message = '';
-        this.total = this.orderService.total;
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.total = this.orderService.total;
         this.activatedRoute.params.subscribe(function () {
             _this.movieService.getCategories().subscribe(function (data) {
                 _this.categoriesAll = data;
@@ -31,12 +31,28 @@ var MovieListComponent = (function () {
         this.activatedRoute.params.subscribe(function (param) {
             _this.movieService.getMovies(param.priority).subscribe(function (data) {
                 _this.movies = data;
+                _this.updateCopies();
             });
+        });
+    };
+    MovieListComponent.prototype.updateCopies = function () {
+        var _this = this;
+        this.orderService.order.forEach(function (element) {
+            var oneMovie = _this.movies.filter(function (movie) {
+                return movie.name === element.name;
+            });
+            oneMovie = oneMovie[0];
+            if (_this.movies) {
+                var index = _this.movies.indexOf(oneMovie);
+                _this.movies[index].copiesLeft -= 1;
+                if (_this.movies[index].copiesLeft === 0) {
+                    _this.movies[index].isAvailable = false;
+                }
+            }
         });
     };
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         if (filmToAddOrder.copiesLeft > 0) {
-            var index = this.movies.indexOf(filmToAddOrder);
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
             this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
@@ -50,11 +66,15 @@ var MovieListComponent = (function () {
         this.total = this.orderService.total;
     };
     MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
-        if (filmToRemoveOrder.isAvailable === false) {
-            filmToRemoveOrder.isAvailable = true;
+        var oneMovie = this.movies.filter(function (movie) {
+            return movie.name === filmToRemoveOrder.name;
+        });
+        oneMovie = oneMovie[0];
+        var index = this.movies.indexOf(oneMovie);
+        this.movies[index].copiesLeft += 1;
+        if (this.movies[index].isAvailable === false) {
+            this.movies[index].isAvailable = true;
         }
-        this.message = 'Movie is removed from your basket!';
-        filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     };

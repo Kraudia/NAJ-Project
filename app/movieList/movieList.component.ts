@@ -21,10 +21,11 @@ export class MovieListComponent implements OnInit {
     constructor(private movieService: MovieService,
         private activatedRoute: ActivatedRoute, 
         private orderService: OrderService) {
-            this.total = this.orderService.total;
     }
 
     ngOnInit () {
+        this.total = this.orderService.total;
+
         this.activatedRoute.params.subscribe(() => {
             this.movieService.getCategories().subscribe(
                 data => {
@@ -37,14 +38,34 @@ export class MovieListComponent implements OnInit {
             this.movieService.getMovies(param.priority).subscribe(
                 data => {
                     this.movies = data;
+                    this.updateCopies();
                 }
             );
+        });
+
+        
+    }
+
+    updateCopies() {
+        this.orderService.order.forEach((element) => {
+            let oneMovie = this.movies.filter((movie) => {
+                return movie.name === element.name;
+            });
+
+            oneMovie = oneMovie[0];
+
+            if (this.movies) {
+                    let index: number = this.movies.indexOf(oneMovie);
+                    this.movies[index].copiesLeft -= 1;
+                    if (this.movies[index].copiesLeft === 0) {
+                        this.movies[index].isAvailable = false;
+                    }
+            }
         });
     }
 
     addChildOrder(filmToAddOrder: MovieFilm) {
         if (filmToAddOrder.copiesLeft > 0) {
-            let index: number = this.movies.indexOf(filmToAddOrder);
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
             this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
@@ -58,11 +79,19 @@ export class MovieListComponent implements OnInit {
     }
 
     removeChildOrder (filmToRemoveOrder: MovieFilm) {
-        if (filmToRemoveOrder.isAvailable === false) {
-            filmToRemoveOrder.isAvailable = true;
-        }
-        this.message = 'Movie is removed from your basket!';
-        filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
+        let oneMovie = this.movies.filter((movie) => {
+                return movie.name === filmToRemoveOrder.name;
+            });
+
+            oneMovie = oneMovie[0];
+
+            let index: number = this.movies.indexOf(oneMovie);
+            this.movies[index].copiesLeft += 1;
+            if (this.movies[index].isAvailable === false) {
+                this.movies[index].isAvailable = true;
+            }
+        
+
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     }
