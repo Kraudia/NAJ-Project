@@ -7,7 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
-var shared_module_1 = require("./shared.module");
+var common_1 = require("@angular/common");
+var submitted_component_1 = require("./submitted.component");
 var order_component_1 = require("./order.component");
 var OrderModule = (function () {
     function OrderModule() {
@@ -16,9 +17,9 @@ var OrderModule = (function () {
 }());
 OrderModule = __decorate([
     core_1.NgModule({
-        imports: [shared_module_1.SharedModule, forms_1.ReactiveFormsModule],
-        declarations: [order_component_1.OrderComponent],
-        exports: [order_component_1.OrderComponent]
+        imports: [common_1.CommonModule, forms_1.ReactiveFormsModule],
+        declarations: [submitted_component_1.SubmittedComponent, order_component_1.OrderComponent],
+        exports: [submitted_component_1.SubmittedComponent, order_component_1.OrderComponent]
     })
 ], OrderModule);
 exports.OrderModule = OrderModule;

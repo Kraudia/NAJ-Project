@@ -27,6 +27,7 @@ var MovieListComponent = (function () {
         this.activatedRoute.params.subscribe(function () {
             _this.movieService.getCategories().subscribe(function (data) {
                 _this.categoriesAll = data;
+                _this.updateCopies();
             });
         });
         this.activatedRoute.params.subscribe(function (param) {
@@ -40,10 +41,10 @@ var MovieListComponent = (function () {
         var _this = this;
         this.orderService.order.forEach(function (element) {
             var oneMovie = _this.movies.filter(function (movie) {
-                return movie.name === element.name;
+                return movie.id === element.id;
             });
             oneMovie = oneMovie[0];
-            if (_this.movies) {
+            if (oneMovie) {
                 var index = _this.movies.indexOf(oneMovie);
                 _this.movies[index].copiesLeft -= 1;
                 if (_this.movies[index].copiesLeft === 0) {
@@ -68,15 +69,17 @@ var MovieListComponent = (function () {
     };
     MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
         var oneMovie = this.movies.filter(function (movie) {
-            return movie.name === filmToRemoveOrder.name;
+            return movie.id === filmToRemoveOrder.id;
         });
         oneMovie = oneMovie[0];
-        var index = this.movies.indexOf(oneMovie);
-        this.movies[index].copiesLeft += 1;
-        if (this.movies[index].isAvailable === false) {
-            this.movies[index].isAvailable = true;
+        if (oneMovie) {
+            var index = this.movies.indexOf(oneMovie);
+            this.movies[index].copiesLeft += 1;
+            if (this.movies[index].isAvailable === false) {
+                this.movies[index].isAvailable = true;
+            }
         }
-        this.message = 'Movie ' + this.movies[index].name + ' is removed from your basket!';
+        this.message = 'Movie is removed from your basket!';
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     };

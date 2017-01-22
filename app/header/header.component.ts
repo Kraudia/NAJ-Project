@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: 'app/header/header.component.html'
 })
 export class HeaderComponent {
-    public meassage:string = 'Hello!';
+    public meassage:string = 'Video Library';
 }

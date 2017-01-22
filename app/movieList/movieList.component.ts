@@ -30,6 +30,7 @@ export class MovieListComponent implements OnInit {
             this.movieService.getCategories().subscribe(
                 data => {
                     this.categoriesAll = data;
+                    this.updateCopies();
                 }
             );
         });
@@ -47,12 +48,12 @@ export class MovieListComponent implements OnInit {
     updateCopies() {
         this.orderService.order.forEach((element) => {
             let oneMovie = this.movies.filter((movie) => {
-                return movie.name === element.name;
+                return movie.id === element.id;
             });
 
             oneMovie = oneMovie[0];
 
-            if (this.movies) {
+            if (oneMovie) {
                     let index: number = this.movies.indexOf(oneMovie);
                     this.movies[index].copiesLeft -= 1;
                     if (this.movies[index].copiesLeft === 0) {
@@ -78,18 +79,19 @@ export class MovieListComponent implements OnInit {
 
     removeChildOrder (filmToRemoveOrder: MovieFilm) {
         let oneMovie = this.movies.filter((movie) => {
-                return movie.name === filmToRemoveOrder.name;
+                return movie.id === filmToRemoveOrder.id;
             });
 
         oneMovie = oneMovie[0];
 
-        let index: number = this.movies.indexOf(oneMovie);
-        this.movies[index].copiesLeft += 1;
-        if (this.movies[index].isAvailable === false) {
-            this.movies[index].isAvailable = true;
+        if(oneMovie) {
+            let index: number = this.movies.indexOf(oneMovie);
+            this.movies[index].copiesLeft += 1;
+            if (this.movies[index].isAvailable === false) {
+                this.movies[index].isAvailable = true;
+            }
         }
-        
-        this.message = 'Movie ' + this.movies[index].name + ' is removed from your basket!';
+        this.message = 'Movie is removed from your basket!';
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     }
