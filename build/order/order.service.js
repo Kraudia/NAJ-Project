@@ -9,16 +9,24 @@ var core_1 = require("@angular/core");
 var OrderService = (function () {
     function OrderService() {
         this.order = [];
+        this.total = 0;
     }
+    OrderService.prototype.sumTotalFee = function () {
+        var _this = this;
+        this.total = 0;
+        if (this.order.length > 0) {
+            this.order.forEach(function (element) {
+                _this.total = _this.total + element.fee;
+            });
+        }
+    };
     OrderService.prototype.addToOrderedMovies = function (movie) {
         this.order.push(movie);
-        console.log("AAAA addToOrderedMovies");
-        console.log(movie);
+        this.sumTotalFee();
     };
     OrderService.prototype.removeFromOrderedMovies = function (movie) {
         this.order.splice(this.order.indexOf(movie), 1);
-        console.log("RRRR removeFromOrderedMovies");
-        console.log(movie);
+        this.sumTotalFee();
     };
     return OrderService;
 }());

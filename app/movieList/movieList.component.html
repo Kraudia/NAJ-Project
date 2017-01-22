@@ -61,7 +61,7 @@
                   <strong>Info!</strong>  {{message}}
                 </div>
                 <div  class="list-group">
-                    <button type="button" *ngFor="let movieFilmInsideFor of order" class="list-group-item">
+                    <button type="button" *ngFor="let movieFilmInsideFor of this.orderService.order" class="list-group-item">
                         <myOrderedMovie [orderedMovieFilm]="movieFilmInsideFor"
                     (removeMovieFilmOrder)="removeChildOrder($event)"></myOrderedMovie>
                     </button>

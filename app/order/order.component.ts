@@ -15,8 +15,8 @@ import { MovieFilm } from './../movieList/movie.model';
 export class OrderComponent implements OnInit {
 
 	location: Location;
-
-  public order: Array<MovieFilm> = [];
+  public order: Order = {};
+  public orderedMovies: Array<MovieFilm> = [];
 
 	submitted = false;
 
@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
 
   constructor(location: Location, private fb: FormBuilder, private orderService: OrderService) {
     this.location = location;
-    this.order = this.orderService.order;
+    this.orderedMovies = this.orderService.order;
   }
 
   ngOnInit(): void {

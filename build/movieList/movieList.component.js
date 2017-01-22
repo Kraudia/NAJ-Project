@@ -18,10 +18,8 @@ var MovieListComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.orderService = orderService;
         this.categoriesAll = {};
-        this.total = 0;
         this.message = '';
-        this.order = this.orderService.order;
-        this.sumTotalFee();
+        this.total = this.orderService.total;
     }
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -39,8 +37,6 @@ var MovieListComponent = (function () {
     MovieListComponent.prototype.addChildOrder = function (filmToAddOrder) {
         if (filmToAddOrder.copiesLeft > 0) {
             var index = this.movies.indexOf(filmToAddOrder);
-            // this.order.push(this.movies[index]);
-            this.sumTotalFee();
             filmToAddOrder.copiesLeft = filmToAddOrder.copiesLeft - 1;
             this.message = "Movie is added to Your basket!";
             if (filmToAddOrder.copiesLeft === 0) {
@@ -51,26 +47,16 @@ var MovieListComponent = (function () {
         else {
             this.message = "Sorry, movie is not available now!";
         }
+        this.total = this.orderService.total;
     };
     MovieListComponent.prototype.removeChildOrder = function (filmToRemoveOrder) {
         if (filmToRemoveOrder.isAvailable === false) {
             filmToRemoveOrder.isAvailable = true;
         }
         this.message = 'Movie is removed from your basket!';
-        var index = this.order.indexOf(filmToRemoveOrder);
-        //this.order.splice(index, 1);
-        this.sumTotalFee();
         filmToRemoveOrder.copiesLeft = filmToRemoveOrder.copiesLeft + 1;
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
-    };
-    MovieListComponent.prototype.sumTotalFee = function () {
-        var _this = this;
-        this.total = 0;
-        if (this.order.length > 0) {
-            this.order.forEach(function (element) {
-                _this.total = _this.total + element.fee;
-            });
-        }
+        this.total = this.orderService.total;
     };
     return MovieListComponent;
 }());

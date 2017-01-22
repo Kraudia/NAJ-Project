@@ -16,7 +16,8 @@ var OrderComponent = (function () {
     function OrderComponent(location, fb, orderService) {
         this.fb = fb;
         this.orderService = orderService;
-        this.order = [];
+        this.order = {};
+        this.orderedMovies = [];
         this.submitted = false;
         this.active = true;
         this.formErrors = {
@@ -43,7 +44,7 @@ var OrderComponent = (function () {
             }
         };
         this.location = location;
-        this.order = this.orderService.order;
+        this.orderedMovies = this.orderService.order;
     }
     OrderComponent.prototype.onSubmit = function () {
         this.submitted = true;
