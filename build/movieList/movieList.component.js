@@ -50,6 +50,9 @@ var MovieListComponent = (function () {
                 if (_this.movies[index].copiesLeft === 0) {
                     _this.movies[index].isAvailable = false;
                 }
+                if (_this.movies[index].copiesLeft < 0) {
+                    _this.removeChildOrder(oneMovie);
+                }
             }
         });
     };

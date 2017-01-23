@@ -59,6 +59,10 @@ export class MovieListComponent implements OnInit {
                     if (this.movies[index].copiesLeft === 0) {
                         this.movies[index].isAvailable = false;
                     }
+
+                    if (this.movies[index].copiesLeft < 0) {
+                        this.removeChildOrder(oneMovie);
+                    }
             }
         });
     }
