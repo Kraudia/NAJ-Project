@@ -33,6 +33,7 @@ router.post('/borrow', (req, res) => {
     }
     if (storage.borrow(req.body.movieIds)){
         res.status(200).send();
+        console.log(req.body);
     } else {
         res.status(500).send('Podczas składania zamówienia wystąpił problem.');
     }

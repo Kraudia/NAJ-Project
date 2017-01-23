@@ -23,7 +23,11 @@ import { Order } from './order.model';
     </div>
     <br>
     <button class="btn btn-default" (click)="onClick()">Edit</button>
-    <button class="btn btn-default" (click)="onClickConfirm()">Confirm</button>
+    <button class="btn btn-success" (click)="onClickConfirm()">Confirm</button>
+    <div *ngIf="this.borrowService.message" class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+    </div>
   </div>`
 })
 
@@ -52,13 +56,14 @@ export class SubmittedComponent {
       form: {
         firstName: this.order.name,
         lastName: this.order.surname,
-        phone:  this.order.phone
+        phone: parseInt(this.order.phone, 10)
       },
       movieIds: orderedMoviesIds
     }
-    console.log(borrow);
-    console.log(JSON.stringify(borrow));
+
     this.borrowService.borrowMovies(borrow).subscribe(
-      data => console.log(data));
+      borrow => {
+        console.log(borrow));
+      }
   }
 }

@@ -11,13 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var BorrowService = (function () {
     function BorrowService(http) {
         this.http = http;
     }
     BorrowService.prototype.borrowMovies = function (borrow) {
-        return this.http.post('/api/borrow/', JSON.stringify(borrow))
-            .map(function (response) { return response.json(); });
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('/api/borrow', JSON.stringify(borrow), options)
+            .map(this.extractData);
+    };
+    BorrowService.prototype.extractData = function (res) {
+        console.log(res);
+        if (res.status)
+            this.message = res.status;
+        var body = res.json();
+        return body.data || {};
     };
     return BorrowService;
 }());

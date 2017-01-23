@@ -31,13 +31,13 @@ var SubmittedComponent = (function () {
             form: {
                 firstName: this.order.name,
                 lastName: this.order.surname,
-                phone: this.order.phone
+                phone: parseInt(this.order.phone, 10)
             },
             movieIds: orderedMoviesIds
         };
-        console.log(borrow);
-        console.log(JSON.stringify(borrow));
-        this.borrowService.borrowMovies(borrow).subscribe(function (data) { return console.log(data); });
+        this.borrowService.borrowMovies(borrow).subscribe(function (borrow) {
+            console.log(borrow);
+        });
     };
     return SubmittedComponent;
 }());
@@ -56,7 +56,7 @@ __decorate([
 SubmittedComponent = __decorate([
     core_1.Component({
         selector: 'order-submitted',
-        template: "\n  <div *ngIf=\"submitted\">\n    <h2>You submitted the following:</h2>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Name</div>\n      <div class=\"col-xs-9  pull-left\">{{ order.name }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Surname</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.surname }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Phone</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.phone }}</div>\n    </div>\n    <br>\n    <button class=\"btn btn-default\" (click)=\"onClick()\">Edit</button>\n    <button class=\"btn btn-default\" (click)=\"onClickConfirm()\">Confirm</button>\n  </div>"
+        template: "\n  <div *ngIf=\"submitted\">\n    <h2>You submitted the following:</h2>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Name</div>\n      <div class=\"col-xs-9  pull-left\">{{ order.name }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Surname</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.surname }}</div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-3\">Phone</div>\n      <div class=\"col-xs-9 pull-left\">{{ order.phone }}</div>\n    </div>\n    <br>\n    <button class=\"btn btn-default\" (click)=\"onClick()\">Edit</button>\n    <button class=\"btn btn-success\" (click)=\"onClickConfirm()\">Confirm</button>\n    <div *ngIf=\"this.borrowService.message\" class=\"alert alert-dismissible alert-success\">\n      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n      <strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>.\n    </div>\n  </div>"
     }),
     __metadata("design:paramtypes", [borrow_service_1.BorrowService,
         order_service_1.OrderService])

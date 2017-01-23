@@ -25,7 +25,7 @@
                   <label for="surname" class="col-lg-2 control-label">Surname</label>
                   <div class="col-lg-10">
                     <input type="text" id="surname" class="form-control"
-                      formControlName="surname" required>
+                      formControlName="surname" required placeholder="Surname">
                     <div *ngIf="formErrors.surname" class="alert alert-danger">
                       {{ formErrors.surname }}
                     </div>
@@ -36,7 +36,7 @@
                   <label for="phone" class="col-lg-2 control-label">Phone</label>
                   <div class="col-lg-10">
                     <input type="text" id="phone" class="form-control"
-                      formControlName="phone" required>
+                      formControlName="phone" required placeholder="Phone">
                     <div *ngIf="formErrors.phone" class="alert alert-danger">
                       {{ formErrors.phone }}
                     </div>
@@ -45,8 +45,11 @@
 
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="reset" class="btn btn-default">Reset</button>
-                    <button type="submit" class="btn btn-primary"  [disabled]="!orderForm.valid">Submit</button>
+                    <button *ngIf="this.orderService.order.length>0" type="reset" class="btn btn-default">Reset</button>
+                    <button *ngIf="this.orderService.order.length>0" type="submit" class="btn btn-primary"  [disabled]="!orderForm.valid">Submit</button>
+                    <div *ngIf="!this.orderService.order.length>0" class="alert alert-dismissible alert-danger">
+                      <a href="#" class="alert-link">You have to borrow any movies first.</a>
+                    </div>
                   </div>
                 </div>
               </fieldset>
