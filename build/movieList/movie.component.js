@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var order_service_1 = require("./../order/order.service");
+var core_1 = require('@angular/core');
+var order_service_1 = require('./../order/order.service');
 var MovieComponent = (function () {
     function MovieComponent(orderService) {
         this.orderService = orderService;
@@ -18,22 +18,22 @@ var MovieComponent = (function () {
     MovieComponent.prototype.addFilmOrder = function () {
         this.orderMovieFilm.emit(this.movieFilm);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MovieComponent.prototype, "movieFilm", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], MovieComponent.prototype, "orderMovieFilm", void 0);
+    MovieComponent = __decorate([
+        core_1.Component({
+            selector: 'myMovie',
+            templateUrl: 'app/movieList/movie.component.html'
+        }), 
+        __metadata('design:paramtypes', [order_service_1.OrderService])
+    ], MovieComponent);
     return MovieComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], MovieComponent.prototype, "movieFilm", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], MovieComponent.prototype, "orderMovieFilm", void 0);
-MovieComponent = __decorate([
-    core_1.Component({
-        selector: 'myMovie',
-        templateUrl: 'app/movieList/movie.component.html'
-    }),
-    __metadata("design:paramtypes", [order_service_1.OrderService])
-], MovieComponent);
 exports.MovieComponent = MovieComponent;
 //# sourceMappingURL=movie.component.js.map

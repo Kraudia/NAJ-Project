@@ -1,6 +1,22 @@
 # Projekt - Wypożyczelnia wideo
 
-## Widoki:
+## Instalacja i uruchomienie
+
+Najpierw sklonuj tej projekt oraz zainstaluj wszystkie paczki, korzystając z konsoli (wiersza poleceń).
+
+```
+npm install
+```
+A następnie uruchom projekt.
+
+```
+node server/server
+```
+
+Projekt jest dostępny na `http://localhost:8081/`.
+
+
+## Widoki
 * Ekran główny (lista + koszyk)
 * Potwierdzenie zamówienia
 * 'O nas'
@@ -40,7 +56,7 @@
 * /order
 * /about
 
-## Końcówki serwera:
+## Końcówki serwera
 * GET /api/movies
 * GET /api/movies/:categoryId
 * GET /api/about

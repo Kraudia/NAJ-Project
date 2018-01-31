@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var movieList_service_1 = require("./movieList.service");
-var order_service_1 = require("./../order/order.service");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var movieList_service_1 = require('./movieList.service');
+var order_service_1 = require('./../order/order.service');
+var router_1 = require('@angular/router');
 var MovieListComponent = (function () {
     function MovieListComponent(movieService, activatedRoute, orderService) {
         this.movieService = movieService;
@@ -86,16 +86,14 @@ var MovieListComponent = (function () {
         this.orderService.removeFromOrderedMovies(filmToRemoveOrder);
         this.total = this.orderService.total;
     };
+    MovieListComponent = __decorate([
+        core_1.Component({
+            selector: 'myMovieList',
+            templateUrl: 'app/movieList/movieList.component.html'
+        }), 
+        __metadata('design:paramtypes', [movieList_service_1.MovieService, router_1.ActivatedRoute, order_service_1.OrderService])
+    ], MovieListComponent);
     return MovieListComponent;
 }());
-MovieListComponent = __decorate([
-    core_1.Component({
-        selector: 'myMovieList',
-        templateUrl: 'app/movieList/movieList.component.html'
-    }),
-    __metadata("design:paramtypes", [movieList_service_1.MovieService,
-        router_1.ActivatedRoute,
-        order_service_1.OrderService])
-], MovieListComponent);
 exports.MovieListComponent = MovieListComponent;
 //# sourceMappingURL=movieList.component.js.map

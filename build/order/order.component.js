@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var common_1 = require("@angular/common");
-var order_service_1 = require("./order.service");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var common_1 = require('@angular/common');
+var order_service_1 = require('./order.service');
 var OrderComponent = (function () {
     function OrderComponent(location, fb, orderService) {
         this.fb = fb;
@@ -101,15 +101,15 @@ var OrderComponent = (function () {
     OrderComponent.prototype.back = function () {
         this.location.back();
     };
+    OrderComponent = __decorate([
+        core_1.Component({
+            selector: 'myOrder',
+            templateUrl: 'app/order/order.component.html',
+            styleUrls: ['app/order/order.component.css']
+        }), 
+        __metadata('design:paramtypes', [common_1.Location, forms_1.FormBuilder, order_service_1.OrderService])
+    ], OrderComponent);
     return OrderComponent;
 }());
-OrderComponent = __decorate([
-    core_1.Component({
-        selector: 'myOrder',
-        templateUrl: 'app/order/order.component.html',
-        styleUrls: ['app/order/order.component.css']
-    }),
-    __metadata("design:paramtypes", [common_1.Location, forms_1.FormBuilder, order_service_1.OrderService])
-], OrderComponent);
 exports.OrderComponent = OrderComponent;
 //# sourceMappingURL=order.component.js.map
